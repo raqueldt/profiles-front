@@ -1,0 +1,463 @@
+.quote{
+  background: #fff;
+  color: #575756;
+  font-size: 0.75rem;
+  font-weight: 600;
+  .header{
+    background: url(/assets/logos/header_oniric.svg) no-repeat;
+    width: 100%;
+    height: 250px;
+    .quote_code {
+      position: absolute;
+      right: 150px;
+      top: 103px;
+      border: 103px;
+      color: #FFF;
+      font-size: 1.9rem;
+      font-weight: 600;
+    }
+  }
+  .footer{
+    text-align: center;
+    font-size: 0.75rem;
+    line-height: 14px;
+    .info{
+      width: 90%; 
+      margin:0 auto; 
+      border-top: 1px solid #003260; 
+      padding:10px
+    }
+    .webmail{
+      margin-top: 3px;
+      b{
+        color:#6f6e6e;
+      }
+    }
+    .pie{
+      background: #003260; 
+      height: 15px;
+    }
+  }
+  .main-quote{
+    .client-info {
+      width: 60%;
+      margin: 0 auto;
+      .lista{
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        border-bottom: 1px solid #868786;
+        padding: 1px 0px 1px 3px;
+        &.top{
+          border-top: 1px solid #868786;
+        }
+        .title{
+          font-weight: 700;
+          width: 23%;
+        }
+      }
+    }
+    .net-total {
+      float: right;
+      width: 480px;
+      height: 40px;
+      font-size: 1.3rem;
+      margin: 1.5rem 0;
+      .img{
+        background: url(/assets/img/formato_pdf/cabecera4.svg) no-repeat;
+        width: 46px;
+        height: auto;
+      }
+      .text{
+        width: 91%;
+        color: #3a3b3a;
+        background: #dceef4;
+        padding: 0.3rem 0 0.3rem 0.7rem;
+        span{
+          color: #003260;
+          font-weight: 700;
+        }
+      }
+    }
+    .order{
+      width:90%;
+      margin: 30px auto 10px;
+      padding: 13px 0;
+      text-align: center;
+      .thanks{
+        font-size: 1.3rem;
+        font-weight: 700;
+        border-bottom: 1px solid #003260;
+        padding: 0 0 1px;
+        margin: 0 0 2px;
+        color:#003260
+      }
+      .timelimit{
+        font-size: 1.3rem;
+        font-weight: 700;
+        padding: 2px 0 2px;
+        color: #3b3b3a;
+      }
+      .closed{
+        border-bottom: 1px solid #003260;
+        padding: 0 0 2px;
+        margin: 0 0 4px;
+      }
+    }
+    .detail, .slots, .itinerary{
+      .text{
+        width: 90%;
+        margin: 0 auto;
+        text-align: center;
+        color:#003260;
+        font-size: 1rem;
+        font-weight: bold;
+        padding: 5px 0;
+        background: #dceef4;
+        border-top: 1px solid #868786; 
+        border-bottom: 1px solid #868786;
+        .departures{
+          font-size: .8rem;
+          span{
+            color: #3a3b3a;
+            font-weight: 400;
+          }
+        }
+        .cru-remarks{
+          text-align: justify;
+          color: #575756;
+          font-size: .7rem !important;
+          font-weight: 400 !important;
+          padding-left: 0.5rem;
+        }
+      }
+      .services, .cabins{
+        width: 90%;
+        margin: 0 auto;
+        table{
+          color: #575655;
+        }
+        .table thead th {
+          vertical-align: middle !important;
+          border-right: 1px solid #868786;
+          border-top: 0;
+          border-bottom: 0;
+          &:last-child {
+            border-right: 0;
+          }
+        }
+        .table th, .table td {
+          border-color: #868786 !important;
+        }
+        .table-sm td {
+          padding: 0.26rem;
+        }
+        .table-hover tbody tr:hover {
+          color: #3b3b3a;
+          background-color: #d7d7d714;
+      }
+        th{
+          color: #3b3b3a !important;
+          text-align: center;
+        }
+        .table tr.subtotales td{
+          border-right: 1px solid #868786;
+          border-bottom: 1px solid #868786;
+          &.cruisetotal{
+            background: #dceef4;
+            font-size: .85rem;
+          }
+        }
+        .table tr.subtotales td:first-child{
+          border-bottom: 0;
+          border-top: 0;
+        }
+        .table tr.subtotales td:last-child{
+          border-right: 0;
+          text-align: right;
+        }
+      }
+      .services{
+        margin-bottom: 30px;
+        th{
+          &.dates{
+            width:13% ;
+          }
+          &.service{
+            width:auto;
+            text-align: left;
+          }
+          &.qty{
+            width: 6%;
+          }
+          &.unit{
+            width: 10%;
+          }
+          &.net{
+            width: 8%;
+          }
+        }
+        .table tbody th{
+          border-bottom: 1px solid #868786;
+          color: #575756 !important;
+          font-weight: 600;
+          &:first-child{
+            border-right: 1px solid #868786;
+            border-bottom: 1px solid #868786;
+            vertical-align: middle;
+          }
+          &.items{
+            padding: 0;
+            .table {
+              margin-bottom: 0rem;
+              td{
+                border-right:1px solid #868786;
+                border-top:0;
+                border-bottom: 1px solid #868786;
+                &:last-child {
+                  border-right: 0;
+                }
+              }
+            }
+          }
+        }
+        .serv{
+          .table.table-cont{
+            td{
+              border-bottom: 0 !important;
+              border-top: 1px solid #868786 !important;
+              &.service{
+                width:auto;
+                text-align: left;
+              }
+              &.qty{
+                width: 6.9%;
+              }
+              &.unit{
+                width: 11.5%;
+                text-align: right;
+              }
+              &.net{
+                width: 9.2%;
+                text-align: right;
+              }
+            }
+          }
+        }
+      }
+      .cabins{
+        th{
+          line-height: 14px;
+          &.pax{
+            width:9% ;
+          }
+          &.type{
+            width:auto;
+            text-align: left !important;
+          }
+          &.retail{
+            width: 9%;
+          }
+          &.agency{
+            width: 9%;
+          }
+        }
+        .table tbody td{
+          text-align: center;
+          border-bottom: 1px solid #868786;
+          border-right: 1px solid #868786;
+          color: #575756 !important;
+          font-weight: 600;
+          &:first-child{
+            border-right: 1px solid #868786;
+            border-bottom: 1px solid #868786;
+            vertical-align: middle;
+          }
+          &:last-child{
+            border-right: 0;
+          }
+        }
+      }
+    }
+    .itinerary{
+      .table-responsive {
+        width: 90%;
+        margin: 0 auto;
+      }
+      .table{
+        margin-bottom: 30px;
+        td{
+          border-color: #868786 !important;
+          border-right: 1px solid #868786;
+          border-left: 1px solid #868786;
+          border-top: 0;
+          &.days{
+            width: 20%;
+            font-weight: 700;
+            padding-left: 0.5rem;
+            vertical-align: middle !important;
+          }
+          &.activities{
+            .table{
+              td{
+                padding: 0;
+                border: 0;
+                &:first-child{
+                  width: 55%;
+                }
+              }
+            }
+          }
+        }
+        tr:last-child td{
+          border-bottom: 1px solid #868786;
+        }
+      }
+    }
+    .important{
+      font-size: 0.75rem;
+      text-align: justify;
+      .title{
+        color: #003260;
+        font-weight: 700;
+        font-size: 0.9rem;
+        &.impo{
+          font-size: 1.4rem;
+        }
+      }
+      .img_include, .img_noinclude{
+        width: 22px;
+        height: 22px;
+        margin-right: .3rem;
+      }
+      .img_important {
+        background: url(/assets/img/formato_pdf/info.svg) no-repeat;
+        width: 38px;
+        height: 38px;
+        margin-right: .3rem;
+      }
+      .img_include {
+        background: url(/assets/img/formato_pdf/include.svg) no-repeat;
+      }
+      .img_noinclude {
+        background: url(/assets/img/formato_pdf/no-include.svg) no-repeat;
+      }
+      .sep{
+        border-bottom: 1px solid #003260;
+        margin-bottom: 15px;
+        padding-bottom: 15px;
+      }
+      ul{
+        padding-inline-start: 23px;
+        margin-bottom: 0rem;
+      }
+      ol.information{
+        padding-inline-start: 20px;
+        margin-bottom: 0rem;
+        li {
+          padding-left: 0rem;
+          padding-top: 0.2rem;
+          &::marker {
+            font-weight: 700;
+          }
+        } 
+      }
+    }
+  }
+  .btn-blue {
+    background-color: #003260;
+    border-color: #003260;
+    font-size: .9rem;
+    font-weight: 700;
+    i{
+      font-size: 1rem;
+    }
+    &:hover {
+      color: #fff;
+      background-color: #00528d;
+      border-color: #00528d;
+    }
+  }
+  &.ec{
+    .header{
+      background: url(/assets/logos/header_atc.svg) no-repeat !important;
+    }
+    
+    .main-quote{
+      .net-total {
+        .img{
+          background: url(/assets/img/formato_pdf/cabecera4-atc.svg) no-repeat !important;
+        }
+        .text{
+          background: #ececed !important;
+          span{
+            color: #cd5300 !important;
+          }
+        }
+      }
+      .order{
+        .thanks{
+          border-bottom: 1px solid #cd5300;
+          color:#cd5300
+        }
+        .closed{
+          border-bottom: 1px solid #cd5300;
+        }
+      }
+      .detail, .slots, .itinerary{
+        .text{
+          color:#cd5300;
+          background: #ececed;
+        }
+        .services, .cabins{
+          .table tr.subtotales td{
+            &.cruisetotal{
+              background: #ececed;
+            }
+            :last-child{
+              text-align: left;
+            }
+          }
+        }
+      }
+      .important{
+        .title{
+          color: #432918;
+        }
+        .img_important {
+          background: url(/assets/img/formato_pdf/info-atc.svg) no-repeat;
+        }
+        .img_include {
+          background: url(/assets/img/formato_pdf/include-atc.svg) no-repeat;
+        }
+        .img_noinclude {
+          background: url(/assets/img/formato_pdf/no-include-atc.svg) no-repeat;
+        }
+        .sep{
+          border-bottom: 1px solid #cd5300 !important; 
+        }
+        
+      }
+    }
+
+    .footer{
+      .info{
+        border-top: 1px solid #cd5300 !important; 
+      }
+      .pie{
+        background: #cd5300 !important; 
+      }
+    }
+    .btn-blue {
+      background-color: #cd5300;
+      border-color: #cd5300;
+      &:hover {
+        color: #fff;
+        background-color: #e45b00;
+        border-color: #e45b00;
+      }
+    }
+  }
+}
