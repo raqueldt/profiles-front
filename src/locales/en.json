@@ -101,7 +101,7 @@
             "notes-placeholder": "Type a notes (eg. Pax requirements, cabins categories, etc)",
             "request-tooltip": "Click here to make a request",
             "request-option": "Request option"
-        },    
+        },
         "bookings-labels": {
             "deck-plans": "Deck plans",
             "display-deck-plans": "Display deck plans",
@@ -125,7 +125,9 @@
             "order-summary": "Order Summary",
             "copy": "Copy",
             "hold-cabins": "Hold Cabins"
-        },           
+        },
+        "dashboard": "Home",
+        "team": "Team",
         "current-percent": "Current percentage",
         "pax-label": "Number of pax",
         "collections": "Collections",
@@ -158,7 +160,6 @@
         "availability-cli": "Clients",
         "availabilityclient": "Availability Client",
         "availability": "Availability",
-        "dashboard": "Dashboard",
         "availability-edit": "Availability Edit",
         "gps": "GPS",
         "close": "Close",
@@ -611,7 +612,7 @@
             "provider":"Supplier"
         },
         "confirmation-itinerary-form": {
-            "start-date": "Start date",            
+            "start-date": "Start date",
             "end-date": "End date",
             "supplier": "Supplier",
             "cost": "Cost",
@@ -658,12 +659,16 @@
         }
     },
     "menu": {
+        "dashboard": "Página principal",
+        "team": "Equipo",
+
+
+
         "ratesmanager": "Rates Manager",
         "reports": "Reports",
         "edit": "Edit",
         "slotsparentedit": "Edit slots",
         "gps": "GPS",
-        "dashboard": "Dashboard",
         "sales": "Sales",
         "availability": "Availability",
         "availabilityclient": "Availability",

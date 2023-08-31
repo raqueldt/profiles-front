@@ -3,14 +3,13 @@
 
 		<b-row>
 			<b-colxx xxs="12">
-				<piaf-breadcrumb :heading="$t('gps.dashboard')" />
+				<piaf-breadcrumb :heading="$t('gps.team')" />
 				<div class="separator mb-2"></div>
 			</b-colxx>
 		</b-row>
 
 
-		MAIN DASHBOARD
-
+		MAIN MI PERFIL
 
 	</div>
 </template>
@@ -19,7 +18,7 @@
 
 
 export default {
-	name: 'MainDashboard',
+	name: 'MainPerfil',
 
 }
 

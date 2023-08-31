@@ -16,10 +16,10 @@ const data = [
   //     to: `/availability`
   // },
   {
-    id: "AvailabilityV2",
+    id: "team",
     icon: "iconsminds-user",
-    label: "Team",
-    to: `/v2/availability`
+    label: "gps.team",
+    to: `/app/team`
   },
 //   {
 //     id: "ratesmanager",
@@ -61,7 +61,7 @@ const data = [
 //   },
   {
     id: "tthh",
-    icon: "iconsminds-line-chart-1",
+    icon: "iconsminds-diploma-2",
     label: "Talento",
     to: ``,
   },

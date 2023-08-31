@@ -47,12 +47,12 @@
 										<!-- <br> -->
 										<label class="font-weight small mt-2"
 											:class="{ 'text-primary': (selectedParentMenu === item.id && viewingParentMenu === '') || viewingParentMenu === item.id }">
-											<span v-if="$t(item.id) == 'dashboard'">Home</span>
+											<!-- <span v-if="$t(item.id) == 'dashboard'">Home</span> -->
 
-											<span v-else>{{ $t(item.label) }}</span>
+											<span>{{ $t(item.label) }}</span>
 
 										</label>
-										<span v-for="(subitem, index) in filteredMenuItems(submenuItems)">
+										<span v-for="(subitem, index) in filteredMenuItems(submenuItemsreport)">
 											<span v-if="$t(item.id) == subitem.id">
 												<span v-if="seen && selectedParentMenu == item.id"
 													:style="[item.id == selectedParentMenu ? { 'color': '#ed7117' } : '', item.id != selectedParentMenu ? { 'color': 'lightgray' } : '']"><b-icon-chevron-down></b-icon-chevron-down></span>
@@ -61,30 +61,37 @@
 
 											</span>
 										</span>
+										<span v-for="(subitem, index) in filteredMenuItems(submenuItemstthh)">
+											<span v-if="$t(item.id) == subitem.id">
+												<span v-if="seen2 && selectedParentMenu == item.id"
+													:style="[item.id == selectedParentMenu ? { 'color': '#ed7117' } : '', item.id != selectedParentMenu ? { 'color': 'lightgray' } : '']"><b-icon-chevron-down></b-icon-chevron-down></span>
+												<span v-if="!seen2 && selectedParentMenu == item.id"
+													:style="[item.id == selectedParentMenu ? { 'color': '#ed7117' } : '', item.id != selectedParentMenu ? { 'color': 'lightgray' } : '']"><b-icon-chevron-up></b-icon-chevron-up></span>
+
+											</span>
+										</span>
 									</div>
 								</button>
 								<!-- <small>{{ ruta }}</small><br>
-								<small>{{ viewingParentMenu }}</small> -->
+								<small>{{ viewingParentMenu }}</small><br>
+								<small>{{ selectedParentMenu }}</small> -->
 								<div class="position-relative progress text-center">
 									<div :class="{ 'progress-bar bg-primary': (ruta !== viewingParentMenu && selectedParentMenu === item.id && viewingParentMenu === '') || viewingParentMenu === item.id }"
 										role="progressbar" style="width: 100%" aria-valuenow="25" aria-valuemin="0"
 										aria-valuemax="100">
 									</div>
 								</div>
-								<div class="div" v-for="(subitem, index) in filteredMenuItems(submenuItems)">
+								<div class="div" v-for="(subitem, index) in filteredMenuItems(submenuItemsreport)">
 									<div class="position-relative progress text-center">
 										<!-- {{ subitem.id }} -->
 										<div :class="{ 'progress-bar bg-primary': ruta !== viewingParentMenu && item.id == 'reports' && index == 0 && viewingParentMenu == '' }"
 											role="progressbar" style="width: 100%" aria-valuenow="25" aria-valuemin="0"
 											aria-valuemax="100">
 										</div>
+
 									</div>
 								</div>
 							</div>
-							<!-- <div v-if="ruta == item.to && viewingParentMenu === item.id">igual
-								<small>{{ selectedParentMenu }}</small>
-							</div>
-							<div v-if="ruta == viewingParentMenu">dif</div> -->
 							<!-- movil -->
 							<div class="d-block d-xs-none">
 								<div class="d-block d-xs-none "
@@ -116,24 +123,22 @@
 							<!-- <div class="menu-button-mobile d-xs-block d-sm-block p-1 mt-2">
 								<modal-snippets-copy-data> </modal-snippets-copy-data>
 							</div> -->
-							<div class="mt-1 text-italic">
-								<div :class="{ 'search border': true, 'mobile-view': isMobileSearch }" ref="searchContainer"
-									@mouseenter="isSearchOver = true" @mouseleave="isSearchOver = false"
-									style="border-radius: 10px; height: 2.5em; width: 16em; border-color:   #f5e2d1  !important;">
+							<div :class="{ 'search': true, 'mobile-view': isMobileSearch }" ref="searchContainer"
+								@mouseenter="isSearchOver = true" @mouseleave="isSearchOver = false">
 
-									<input :placeholder="$t('menu.search')" v-model="search" autocomplete="off" maxlength=""
-										@keyup.enter="handleSearch" />
-									<span class="search-icon" @click="handleSearch">
-										<b-icon-search class="mt-2"></b-icon-search>
-									</span>
-								</div>
+								<b-input :placeholder="$t('menu.search')" v-model="search" autocomplete="off" maxlength="15"
+									@keyup.enter="handleSearch" />
+								<span class="search-icon" @click="handleSearch">
+									<i class="simple-icon-magnifier"></i>
+								</span>
 							</div>
-							<!-- <div class="p-1 mt-2 ml-2">
+
+							<div class="p-1 mt-2 ml-2">
 								<router-link tag="a" :to="`${adminRoot}/targets`">
 									<i class="glyph-icon iconsminds-pie-chart-3 h6 m-0"
 										v-tooltip="{ content: 'Targets', placement: 'top' }"></i>
 								</router-link>
-							</div> -->
+							</div>
 							<div class="p-1 mt-2">
 								<a variant="empty" class="header-icon btn-sm" @click="toggleFullScreen">
 									<i style="color:gray"
@@ -147,7 +152,11 @@
 
 				<div class="row">
 					<div class="user m-2">
-						{{ currentUser.fullname }}
+
+						<router-link tag="a" :to="`${adminRoot}/targets`">
+							{{ currentUser.fullname }}
+						</router-link>
+
 					</div>
 					<div class="user m-2 ">
 						<b-dropdown class="dropdown-menu-right" right offset="25" variant="empty" toggle-class="p-0"
@@ -168,23 +177,26 @@
 					</div>
 				</div>
 			</div>
-			<b-card class="bg-light w-60" v-if="!seen && selectedParentMenu == 'reports'">
+
+			<b-card class="bg-light w-50" v-if="!seen2 && selectedParentMenu == 'tthh'">
 				<div class=" justify-content-start ml-3 " style="position: relative; top: -1em;">
 					<b-tabs content-class="mt-3 ">
 						<b-tab :title=item.label :class="{ index: 0, 'active': 'active' }"
-							v-for="( item, index ) in  filteredMenuItems(submenuItems) ">
+							v-for="( item, index ) in  filteredMenuItems(submenuItemstthh) ">
+							<!-- {{ item }} -->
 							<div class="row">
 								<div class="col-md-4" v-for="( detail, index ) in  item.subs ">
-									<span v-if="item.label == 'Oniric'"> <b-icon-check
+									<span v-if="item.label == 'Publicación'"> <b-icon-check
 											:class="{ 'bg-primary': ruta == detail.to }"></b-icon-check>
 
 										<a :href=detail.to>{{ detail.label }}</a>
 
 									</span>
-									<span v-if="item.label == 'In Progress'"> <b-icon-arrow-right-short
+									<span v-if="item.label == 'Actualización'"> <b-icon-arrow-right-short
 											:class="{ 'bg-primary': ruta == detail.to }">
 										</b-icon-arrow-right-short> <a :href=detail.to>
-											{{ report=true }}{{ detail.label }}</a>
+											<!-- Rol de pagos											{{ tthh=true }} -->
+											{{ detail.label }}</a>
 									</span>
 								</div>
 							</div>
@@ -192,25 +204,33 @@
 					</b-tabs>
 				</div>
 			</b-card>
-			<b-card class="bg-white border border-light text-light w-40 mt-2"
-				v-if="!seen && selectedParentMenu == 'reports'" hidden>
-				<div class="row">
-					<div class="row col justify-content-start m-1 " style="position: relative; top: -2em;">
-						<b-tabs content-class="mt-3 center" no-nav-style card>
-							<b-tab :title=item.label active v-for="( item, index ) in  filteredMenuItems(submenuItems) ">
-								<div class="row">
-									<div class="m-1" v-for="( detail, index ) in  item.subs ">
-										<button class="btn btn-light btn-sm border-0 m-1"> <a
-												:href=detail.to>{{ detail.label }}</a>
-										</button>
-									</div>
+			<b-card class="bg-light w-40" v-if="!seen && selectedParentMenu == 'reports'">
+				<div class=" justify-content-start ml-3 " style="position: relative; top: -1em;">
+					<b-tabs content-class="mt-3 ">
+						<!-- {{ report }} df -->
+						<b-tab :title=item.label :class="{ index: 0, 'active': 'active' }"
+							v-for="( item, index ) in  filteredMenuItems(submenuItemsreport) ">
+							<div class="row">
+								<div class="col-md-4" v-for="( detail, index ) in  item.subs ">
+									<span v-if="item.label == 'Usuarios'"> <b-icon-check
+											:class="{ 'bg-primary': ruta == detail.to }"></b-icon-check>
+
+										<a :href=detail.to>{{ detail.label }}</a>
+
+									</span>
+									<span v-if="item.label == 'Procesos'"> <b-icon-arrow-right-short
+											:class="{ 'bg-primary': ruta == detail.to }">
+										</b-icon-arrow-right-short> <a :href=detail.to>
+											<!-- {{ report=true }} -->
+											{{ detail.label }}</a>
+									</span>
 								</div>
-							</b-tab>
-						</b-tabs>
-					</div>
+							</div>
+						</b-tab>
+					</b-tabs>
 				</div>
 			</b-card>
-			<!-- {{ report }} df -->
+
 			<!-- {{ ruta }} ::::::: {{ viewingParentMenu }} -->
 		</div>
 	</nav>
@@ -234,7 +254,8 @@ import {
 } from "../../constants/config";
 import { getDirection, setDirection, getThemeColor, setThemeColor } from "../../utils";
 import menuItems from "../../constants/menuHorizonal";
-import submenuItems from "../../constants/submenuHorizonal";
+import submenuItemsreport from "../../constants/submenuHorizonal";
+import submenuItemstthh from "../../constants/submenuTalentoHumano";
 export default {
 	components: {
 		"menu-icon": MenuIcon,
@@ -256,15 +277,17 @@ export default {
 			notifications,
 			isDarkActive: false,
 			menuItems,
-			submenuItems,
+			submenuItemsreport,
+			submenuItemstthh,
 			selectedParentMenu: "",
 			mostrarIcono: false,
-			//2022-03-31 | fg | default home
 			homeDefault: '/app/dashboard',
 			search: null,
 			seen: true,
+			seen2: true,
 			ruta: '',
-			report: ''
+			report: '',
+			tthh: ''
 		};
 	},
 	methods: {
@@ -275,6 +298,8 @@ export default {
 		verificarSeleccion(item) {
 			if (item == 'reports') {
 				this.seen = !this.seen;
+			} else if (item == 'tthh') {
+				this.seen2 = !this.seen2;
 			} else {
 				this.seen = true;
 			}

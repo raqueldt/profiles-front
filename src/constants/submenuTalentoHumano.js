@@ -5,52 +5,55 @@ const data = [
   /******************************** MENU GPS ****************************** */
 
   {
-    id: "reports",
+    id: "tthh",
     icon: "iconsminds-line-chart-1",
-    label: "Usuarios",
-    to: `${adminRoot}/reports`,
+    label: "Publicación",
+    to: `${adminRoot}/tthh`,
     subs: [
       {
         id: "oniric-financial-analysis-weeks",
-        label: "Interno",
+        label: "Noticias",
         to: `/oniric/financial-analysis-weeks`
       },
       {
         id: "cruise-sales-overview",
-        label: "Empresas",
+        label: "Rol de pagos",
         to: `/oniric/cruise-sales-overview`
       },
-
     ]
   },
   {
     id: "in-progress-reports",
     icon: "iconsminds-coding",
-    label: "Procesos",
+    label: "Actualización",
     to: "/in-progress-reports",
     subs: [
       {
         id: "client-analysis",
-        label: "Permisos",
+        label: "Documentos",
         to: `/client-analysis`
       },
       {
         id: "sales-progress",
-        label: "Vacaciones",
+        label: "Cargas Familiares",
         to: `/sales-progress`
       },
-
+      {
+        id: "passenger-analysis",
+        label: "Feriados",
+        to: `/passenger-analysis`
+      },
       {
         id: "sales-by-travel",
-        label: "Home Office",
+        label: "Formulario 107",
         to: `/sales-by-travel`
       },
 
       {
-        id: "year-to-date-sales",
-        label: "Reconocimientos",
-        to: `/year-to-date-sales`
-      },
+        id: "cruise-itinerary-sales",
+        label: "Departamentos",
+        to: `/oniric/cruise-itinerary-sales`
+      }
 
     ]
   }
