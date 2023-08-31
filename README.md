@@ -41,16 +41,20 @@ El proyecto **PROFILES FRONT** utiliza una variedad de tecnologías clave, que i
 
 El repositorio está organizado de la siguiente manera:
 
-- **src**: Contiene el código fuente de la aplicación.
-  - **components**: Componentes reutilizables de React.
-  - **containers**: Contenedores que conectan los componentes con el estado de la aplicación.
-  - **redux**: Configuración de Redux, incluyendo acciones, reducers y el store.
-  - **styles**: Archivos de estilo en CSS o SASS.
-  - **utils**: Utilidades y funciones auxiliares.
-- **public**: Contiene archivos estáticos como imágenes y archivos HTML.
-- **config**: Configuración del proyecto.
-- **docs**: Documentación adicional, si es necesaria.
-- **tests**: Pruebas unitarias y de integración.
+```plaintext
+.
+├── src/
+│   ├── components/
+│   ├── containers/
+│   ├── styles/
+│   └── utils/
+├── public/
+├── config/
+├── docs/
+├── tests/
+└── README.md
+
+```
 
 ## Instrucciones de Ejecución
 
