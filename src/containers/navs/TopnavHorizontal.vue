@@ -153,7 +153,7 @@
 				<div class="row">
 					<div class="user m-2">
 
-						<router-link tag="a" :to="`${adminRoot}/targets`">
+						<router-link tag="a" :to="`${adminRoot}/perfil`">
 							{{ currentUser.fullname }}
 						</router-link>
 

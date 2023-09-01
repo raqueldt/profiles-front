@@ -39,6 +39,15 @@ const routes = [
         component: () =>
           import("@/views/app/profiles/team/MainTeam")
       },
+      {
+        path: "/app/perfil",
+        beforeEnter: AuthRequired,
+        props: true,
+        name: "Perfil",
+        component: () =>
+          import("@/views/app/profiles/perfil/MainPerfil")
+      },
+
       /* ******************* GPS ******************* */
 
       {

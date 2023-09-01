@@ -34,8 +34,8 @@ export default {
       this.items.push({
         text:
           "/" + sub !== adminRoot
-            ? this.$t("menu." + sub)
-            : this.$t("menu.home"),
+            ? this.$t("titles." + sub)
+            : this.$t("titles.home"),
         to: this.getUrl(path, sub, index)
       });
     });

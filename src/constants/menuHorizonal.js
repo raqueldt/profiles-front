@@ -6,19 +6,19 @@ const data = [
   {
     id: "dashboard",
     icon: "simple-icon-grid",
-    label: "gps.dashboard",
+    label: "profiles.dashboard",
     to: `${adminRoot}/dashboard`
   },
   // {
   //     id: "newAvailability",
   //     icon: "iconsminds-yacht",
-  //     label: "gps.availability",
+  //     label: "profiles.availability",
   //     to: `/availability`
   // },
   {
     id: "team",
     icon: "iconsminds-user",
-    label: "gps.team",
+    label: "profiles.team",
     to: `/app/team`
   },
 //   {
@@ -62,7 +62,7 @@ const data = [
   {
     id: "tthh",
     icon: "iconsminds-diploma-2",
-    label: "Talento",
+    label: "TTHH",
     to: ``,
   },
   {
