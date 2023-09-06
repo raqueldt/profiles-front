@@ -2,12 +2,10 @@
 	<div>
 		<b-card>
 			<b-card-header>
-				<b-row>
-					<b-col lg="10">
-						<h5>Tabla de Usuarios</h5>
-					</b-col>
-					<b-col>11</b-col>
-				</b-row>
+				<div class="d-flex justify-content-between align-items-center mb-3">
+					<h5 class="m-0">Usuarios</h5>
+					<ButtonBasic variant="primary" text="New User" @click="handleClick" />
+				</div>
 
 
 			</b-card-header>
@@ -23,10 +21,12 @@
 import internoServices from "../../../../../services/profiles/interno/internoServices";
 import { mapGetters } from "vuex";
 import TableBasic from '../../../../../components/UI/Tables/TableBasic.vue';
+import ButtonBasic from '../../../../../components/UI/Button/ButtonBasic.vue';
 
 export default {
 	components: {
-		TableBasic
+		TableBasic,
+		ButtonBasic
 	},
 	name: "GeneralInterno",
 	data() {
@@ -124,7 +124,10 @@ export default {
 			} catch (error) {
 				console.error("Error:", error);
 			}
-		}
+		},
+		handleClick() {
+			alert("Botón personalizado clicado");
+		},
 	},
 	async mounted() {
 		await this.getInfo();
