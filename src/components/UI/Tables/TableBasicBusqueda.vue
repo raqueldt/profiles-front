@@ -1,6 +1,8 @@
 <template>
   <div>
-    <b-table :items="displayedItems" :fields="fields" :per-page="perPage" :options="options" responsive bordered  hover></b-table>
+    <!-- Agrega un campo de entrada para el filtro -->
+    <input type="text" v-model="searchTerm" placeholder="Buscar por nombre completo" />
+    <b-table :items="displayedItems" :fields="fields" :per-page="perPage" :options="options" responsive bordered striped hover></b-table>
     <b-pagination v-model="currentPage" :total-rows="items.length" :per-page="perPage" align="center" @change="onPageChange"></b-pagination>
   </div>
 </template>
@@ -17,7 +19,8 @@ export default {
   data() {
     return {
       currentPage: 1,
-      displayedItems: [] // Variable para mostrar los datos de la página actual
+      displayedItems: [], // Variable para mostrar los datos de la página actual
+      searchTerm: '' // Propiedad para el término de búsqueda
     };
   },
   computed: {
@@ -30,22 +33,29 @@ export default {
     }
   },
   watch: {
-    // Observa los cambios en la página actual y actualiza los datos mostrados
+    // Observa los cambios en la página actual y el término de búsqueda
     currentPage(newPage) {
       this.updateDisplayedItems(newPage);
+    },
+    searchTerm(newTerm) {
+      this.updateDisplayedItems(this.currentPage);
     }
   },
   methods: {
     onPageChange(newPage) {
       this.currentPage = newPage;
     },
-    // Actualiza los datos mostrados según la página actual
+    // Actualiza los datos mostrados según la página actual y el término de búsqueda
     updateDisplayedItems(newPage) {
-      this.displayedItems = this.items.slice(this.startIndex, this.endIndex);
+      const filteredItems = this.items.filter(item => {
+        // Filtra por nombre_completo si hay un término de búsqueda
+        return this.searchTerm ? item.nombre_completo.toLowerCase().includes(this.searchTerm.toLowerCase()) : true;
+      });
+      this.displayedItems = filteredItems.slice(this.startIndex, this.endIndex);
     }
   },
-  mounted() {
-    // Al montar el componente, inicialmente muestra los datos de la primera página
+  created() {
+    // Al crear el componente, inicialmente muestra los datos de la primera página
     this.updateDisplayedItems(this.currentPage);
   }
 }
