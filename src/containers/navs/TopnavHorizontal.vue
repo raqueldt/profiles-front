@@ -135,7 +135,7 @@
 
 							<div class="p-1 mt-2 ml-2">
 								<router-link tag="a" :to="`${adminRoot}/targets`">
-									<i class="glyph-icon iconsminds-pie-chart-3 h6 m-0"
+									<i class="glyph-icon iconsminds-files h6 m-0"
 										v-tooltip="{ content: 'Targets', placement: 'top' }"></i>
 								</router-link>
 							</div>

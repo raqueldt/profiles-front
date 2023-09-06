@@ -14,7 +14,7 @@
                 <center>
                 <router-link tag="a" to="/">
                     <span class="logo-single" />
-                </router-link>              
+                </router-link>
                 </center>
 
                 <!-- <h6 class="mb-4">{{ $t('user.login-title')}}</h6> -->
@@ -67,7 +67,6 @@
 </template>
 
 <script>
-//import authServices from '../../../src/services/auth/authServices.js';
 import authServices from '../../../src/services/auth/authServices.js';
 import axios from 'axios';
 import {
@@ -181,20 +180,20 @@ export default {
                             });
                         /* ************************  FIN OBTENGO DATOS DE USER METODO USERINFO ************************/
 
-                    //this.$router.push('/app/dashboard')
-                    // let respuesta = response.status;
-                    // console.log("Respuesta inicial" + JSON.stringify(response));
-                    // if(respuesta === 200){
-                    //     // this.$router.push('/app/dashboard').catch(err => {
-                    //     //     console.log("Error en la ruta=> " + err);
-                    //     // })
-                    //     //this.$router.replace({ name: "dashboard" });
-                    //     console.log("Respuesta exitosa codigo 200" + respuesta)
-                    //     this.$router.replace({name: "dashboard"}).catch(err => {})
-                    //     //this.$store.commit("setAuthentication", true);
-                    // }
-                    // console.log("Respuesta NO exitosa codigo 200: " + respuesta)
-                    //  this.$router.replace({name: "dashboard"}).catch(err => {})
+                    this.$router.push('/app/dashboard')
+                     let respuesta = response.status;
+                     console.log("Respuesta inicial" + JSON.stringify(response));
+                     if(respuesta === 200){
+                          this.$router.push('/app/dashboard').catch(err => {
+                              console.log("Error en la ruta=> " + err);
+                          })
+                         this.$router.replace({ name: "dashboard" });
+                         console.log("Respuesta exitosa codigo 200" + respuesta)
+                         this.$router.replace({name: "dashboard"}).catch(err => {})
+                         this.$store.commit("setAuthentication", true);
+                     }
+                     console.log("Respuesta NO exitosa codigo 200: " + respuesta)
+                      this.$router.replace({name: "dashboard"}).catch(err => {})
 
                 }).catch(error => {
                     if(Boolean(error)){

@@ -10,17 +10,19 @@
 
 
 		MAIN TALENTO HUMANO
-
+		<general></general>
 
 	</div>
 </template>
 
 <script>
-
+import general from "./general/GeneralTeam.vue"
 
 export default {
 	name: 'MainTeam',
-
+	components: {
+		general
+	}
 }
 
 </script>

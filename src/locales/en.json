@@ -1,4 +1,15 @@
 {
+	"profiles": {
+		"dashboard": "Home",
+		"team": "Team",
+		"perfil": "Perfil"
+	},
+	"titles": {
+		"home": "Home",
+		"dashboard": "Página principal",
+		"team": "Equipo",
+		"perfil": "Mi perfil"
+	},
 	"general": {
 		"copyright": "Piaf Vue © 2018 All Rights Reserved."
 	},
@@ -329,17 +340,6 @@
 			"compensations": "Compensaciones",
 			"resume-by-client": "Resumen por Cliente"
 		}
-	},
-	"profiles": {
-		"dashboard": "Home",
-		"team": "Team",
-		"perfil": "Perfil"
-	},
-	"titles": {
-		"home": "Home",
-		"dashboard": "Página principal",
-		"team": "Equipo",
-		"perfil": "Mi perfil"
 	},
 	"menu": {
 		"ratesmanager": "Rates Manager",
