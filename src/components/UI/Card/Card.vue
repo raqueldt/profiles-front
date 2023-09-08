@@ -1,32 +1,41 @@
 <template>
-  <b-card>
-    <div class="row m-1">
-      <div class="col-md-4">
-        <b-img :src="imageSrc" alt="Card Image" thumbnail fluid rounded-circle />
-      </div>
+	<b-card class="m-1">
+		<div class="row ">
+			<div class="col-6">
+				<b-img :src="imageSrc" alt="Card Image" thumbnail fluid class="rounded-circle border border-light" />
+			</div>
 
-      <div class="col-md-8">
-        <h4>{{ title }}</h4>
-        <p>{{ text }}</p>
+			<div class="col">
+				<div class="text-right">
+					<h3>{{ title }}</h3>
+					<p>{{ text }}</p>
+				</div>
+				<hr>
+				<div class="row">
+					<b-col md="12" v-for="(item, index) in adicional" :key="index" class="text">
 
-        <!-- Footer de la tarjeta -->
-      </div>
-    </div>
-        <b-card-footer>
-          {{ footer }}
-        </b-card-footer>
-  </b-card>
+						<b-row>
+							<b-col> <label class="text-muted">{{ item.titulo }}</label></b-col>
+							<b-col><label class="mb-0 text-center">{{ item.texto }}</label></b-col>
+						</b-row>
+
+
+					</b-col>
+				</div>
+			</div>
+		</div>
+	</b-card>
 </template>
 
 <script>
 export default {
-  name: 'Card',
-  props: {
-    title: String,
-    imageSrc: String,
-    text: String,
-    footer: String
-  }
+	name: 'Card',
+	props: {
+		title: String,
+		imageSrc: String,
+		text: String,
+		adicional: Array // Cambiado a un Array
+	}
 }
 </script>
 
