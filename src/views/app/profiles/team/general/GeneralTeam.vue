@@ -9,9 +9,9 @@
 
 
 			</b-card-header>
-			<TableBasic :items="datos" :fields="datos" :perPage="7" :options="opciones" />
-			<b-card-footer>
-				<p>Pie de página de la tabla</p>
+			<TableBasic :items="datos" :fields="datos" :perPage="5" :options="opciones" />
+			<b-card-footer class="text-right">
+				<h4 class="text-muted">Total usuarios: {{ datos.length }}</h4>
 			</b-card-footer>
 		</b-card>
 	</div>
@@ -110,17 +110,17 @@ export default {
 	methods: {
 		async getInfo() {
 			try {
-				const response = await internoServices.getAllUsersActive();
-				const data = response.data.data;
-				const filteredData = data.map(item => {
-					return {
-						nombre_completo: item.nombre_completo,
-						email: item.email,
-						departamento: item.departamento,
-						extension: item.extension,
-					};
-				});
+				const response = await internoServices.getAllUsersActive(),
+					filteredData = response.data.data.map(item => {
+						return {
+							nombre_completo: item.nombre_completo,
+							email: item.email,
+							departamento: item.departamento,
+							extension: item.extension,
+						};
+					});
 				this.datos = filteredData;
+				console.log(this.datos);
 			} catch (error) {
 				console.error("Error:", error);
 			}

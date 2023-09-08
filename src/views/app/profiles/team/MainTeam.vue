@@ -9,7 +9,7 @@
 		</b-row>
 
 
-		MAIN TALENTO HUMANO
+		<!-- MAIN TALENTO HUMANO -->
 		<general></general>
 
 	</div>
