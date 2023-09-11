@@ -15,7 +15,6 @@ export default {
   show(params) {
     console.log("paaa", params);
     let url = server + resource + "perfilUser";
-
     return Axios.get(url, { params });
   }
 };

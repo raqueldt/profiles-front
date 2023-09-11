@@ -151,13 +151,7 @@
 				</div>
 
 				<div class="row">
-					<div class="user m-2">
 
-						<router-link tag="a" :to="`${adminRoot}/perfil`">
-							{{ currentUser.fullname }}
-						</router-link>
-
-					</div>
 					<div class="user m-2 ">
 						<b-dropdown class="dropdown-menu-right" right offset="25" variant="empty" toggle-class="p-0"
 							menu-class="mt-1" no-caret>
@@ -168,12 +162,32 @@
 									<img :alt="currentUser.title" :src="currentUser.img" style="margin-top: -10px" />
 								</span>
 							</template>
-							<div class="hola1">
-								<b-dropdown-item @click="logout" class="hola2">
+							<div>
+								<b-dropdown-item>
+									<router-link tag="a" :to="`${adminRoot}/perfil`">
+										<div >
+											{{ currentUser.fullname }}<br>
+											<small>
+												Mi perfil
+											</small>
+										</div>
+									</router-link>
+								</b-dropdown-item>
+								<b-dropdown-item @click="logout">
 									Sign out
 								</b-dropdown-item>
 							</div>
 						</b-dropdown>
+					</div>
+					<div class="user m-2" hidden>
+
+						<router-link tag="a" :to="`${adminRoot}/perfil`">
+							{{ currentUser.fullname }}<br>
+							<small>
+								Colaborador
+							</small>
+						</router-link>
+
 					</div>
 				</div>
 			</div>

@@ -1,18 +1,19 @@
 <template>
-	<b-card class="m-1">
-		<div class="card-body">
-			<div class="d-flex">
-				<div class="flex-grow-1">
-					<p class="text-muted">{{ title }}</p>
-					<span class="mb-0 text-center">{{ text }}</span>
-				</div>
-				<div class="flex align-self-center">
-					<div v-html="svg"></div>
-				</div>
-			</div>
-		</div>
-	</b-card>
+  <b-card class="m-1">
+    <div class="">
+      <b-row>
+        <b-col md="7">
+          <p class="text-muted">{{ title }}</p>
+          <span class="mb-0 text-center">{{ text }}</span>
+        </b-col>
+        <b-col md="" class="text-right">
+          <div v-html="svg"></div>
+        </b-col>
+      </b-row>
+    </div>
+  </b-card>
 </template>
+
 
 <script>
 export default {
