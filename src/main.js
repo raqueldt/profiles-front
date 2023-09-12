@@ -91,7 +91,7 @@ import VCalendar from 'v-calendar'
 Vue.use(VCalendar)
 
 
-/* 
+/*
 2021-06-14 fg
 */
 import Vue2Filters from 'vue2-filters'

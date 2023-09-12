@@ -1,8 +1,7 @@
 <template>
 	<div>
 		{{ loggedUser }}
-		222
-		<!-- <misreconocimientos/> -->
+		<!-- <misreconocimientos/> -->333
 
 	</div>
 </template>

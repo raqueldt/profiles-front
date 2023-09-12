@@ -52,6 +52,8 @@ import perfiles from '../../../../../components/UI/IndexSVG/svg';
 
 import Pestana1Component from '../general/Pestana1Component.vue';
 import Pestana2Component from '../general/Pestana2Component.vue';
+import Pestana3Component from '../general/Pestana3Component.vue';
+import Pestana4Component from '../general/Pestana4Component.vue';
 
 
 export default {
@@ -62,6 +64,8 @@ export default {
 		TabsDinamicas,
 		Pestana1Component,
 		Pestana2Component,
+		Pestana3Component,
+		Pestana4Component,
 
 	},
 	name: "GeneralPerfil",
@@ -72,8 +76,8 @@ export default {
 			pestanas: [
 				{ nombre: 'Infomación general', component: Pestana1Component },
 				{ nombre: 'Mis Solicitudes', component: Pestana2Component },
-				{ nombre: 'Mis Documentos', component: Pestana1Component },
-				{ nombre: 'Mi reconocimientos', component: Pestana1Component },
+				{ nombre: 'Mis Documentos', component: Pestana3Component },
+				{ nombre: 'Mi reconocimientos', component: Pestana4Component },
 			],
 			userData: []
 		};
