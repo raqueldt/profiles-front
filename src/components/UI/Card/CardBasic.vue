@@ -4,7 +4,7 @@
       <b-row>
         <b-col md="7">
           <p class="text-muted">{{ title }}</p>
-          <span class="mb-0 text-center">{{ text }}</span>
+          <label class="mb-0 text-center">{{ text }}</label>
         </b-col>
         <b-col md="" class="text-right">
           <div v-html="svg"></div>

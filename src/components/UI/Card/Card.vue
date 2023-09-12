@@ -1,24 +1,20 @@
 <template>
 	<b-card class="m-1">
 		<div class="row ">
-			<div class="col-4">
-				<b-img :src="imageSrc" alt="Card Image" thumbnail fluid class="rounded-circle border border-light mt-3" />
-				<br>
-				<div class="text-center font-italic text-muted m-1 ">
+			<div class="col">
+				<div class="text-left font-italic text-muted">
 					<span> {{ text }} </span>
 				</div>
-			</div>
-
-			<div class="col">
-				<div class="text-right">
-					<h3>{{ title }}</h3>
-					<span>{{ subtitle }} </span><br>
-
+				<div class="text-center">
+					<b-img :src="imageSrc" alt="Card Image" thumbnail fluid
+						class="rounded-circle border border-light mt-3 w-40" />
+					<br>
+					<h4>{{ title }}</h4>
+					<label>{{ subtitle }} </label><br>
 				</div>
 				<hr>
 				<div class="row">
 					<b-col md="12" v-for="(item, index) in adicional" :key="index" class="text-left">
-
 						<b-row>
 							<b-col md="5">
 								<label class="text-muted">{{ item.titulo }}</label>

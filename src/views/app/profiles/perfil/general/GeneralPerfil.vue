@@ -4,7 +4,7 @@
 
 		<b-container fluid>
 			<b-row>
-				<b-col md="5">
+				<b-col md="4">
 						<Card :title=userData.nombre_completo :imageSrc=currentUser.img :subtitle=userData.cargo :text=nombreEmpresa
 						:adicional="[
 							{ titulo: 'Departamento', texto: userData.departamento },
@@ -24,7 +24,7 @@
 					</b-card>
 
 				</b-col>
-				<b-col md="7">
+				<b-col md="8">
 
 					<TabsDinamicas :tabs="pestanas" />
 
