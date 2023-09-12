@@ -1,20 +1,18 @@
 <template>
 	<div>
-		<!-- {{ loggedUser }}
-    -->
+		<!-- {{ loggedUser }}    -->
 
-		{{ empresa }}
 		<b-container fluid>
 			<b-row>
 				<b-col md="5">
-					<Card :title=datos.nombre_completo :imageSrc=currentUser.img :subtitle=datos.cargo :text=nombreEmpresa
+						<Card :title=userData.nombre_completo :imageSrc=currentUser.img :subtitle=userData.cargo :text=nombreEmpresa
 						:adicional="[
-							{ titulo: 'Departamento', texto: datos.departamento },
-							{ titulo: 'Identificación', texto: datos.identificacion },
-							{ titulo: 'Correo', texto: datos.email },
-							{ titulo: 'Contacto', texto: datos.numero_contacto },
-							{ titulo: 'Acumula décimos', texto: datos.acumula_decimos },
-							{ titulo: 'Discapacidad', texto: datos.posee_discapacidad },
+							{ titulo: 'Departamento', texto: userData.departamento },
+							{ titulo: 'Identificación', texto: userData.identificacion },
+							{ titulo: 'Correo', texto: userData.email },
+							{ titulo: 'Contacto', texto: userData.numero_contacto },
+							{ titulo: 'Acumula décimos', texto: userData.acumula_decimos },
+							{ titulo: 'Discapacidad', texto: userData.posee_discapacidad },
 						]" />
 
 					<b-card class="m-1">
@@ -28,7 +26,7 @@
 				</b-col>
 				<b-col md="7">
 
-				<TabsDinamicas :tabs="pestanas" :datos="datos" />
+					<TabsDinamicas :tabs="pestanas" />
 
 
 				</b-col>
@@ -36,7 +34,7 @@
 		</b-container>
 
 
-		<pre> {{ datos }} </pre>
+		<pre> {{ userData }} </pre>
 
 
 	</div>
@@ -53,6 +51,7 @@ import TabsDinamicas from '../../../../../components/UI/Tab/TabsDinamicas.vue';
 import perfiles from '../../../../../components/UI/IndexSVG/svg';
 
 import Pestana1Component from '../general/Pestana1Component.vue';
+import Pestana2Component from '../general/Pestana2Component.vue';
 
 
 export default {
@@ -61,45 +60,40 @@ export default {
 		CardBasic,
 		ButtonBasic,
 		TabsDinamicas,
-		Pestana1Component
+		Pestana1Component,
+		Pestana2Component,
+
 	},
 	name: "GeneralPerfil",
 	data() {
 		return {
-			datos: [],
 			perfiles: perfiles,
 			nombreEmpresa: '',
 			pestanas: [
 				{ nombre: 'Infomación general', component: Pestana1Component },
-				{ nombre: 'Permisos', component: Pestana1Component },
-				{ nombre: 'Documentos', component: Pestana1Component },
-			]
-
+				{ nombre: 'Mis Solicitudes', component: Pestana2Component },
+				{ nombre: 'Mis Documentos', component: Pestana1Component },
+				{ nombre: 'Mi reconocimientos', component: Pestana1Component },
+			],
+			userData: []
 		};
 	},
+
 	computed: {
 		...mapGetters({
 			currentUser: "currentUser"
 		}),
+
 		loggedUser: function () {
 			return this.$store.state.user.currentUser["id"];
+		},
+		currentUserVariable() {
+			return this.currentUser;
 		}
 	},
 	methods: {
 
-		async getInfo() {
-			const params = {
-				id: this.loggedUser
-			};
 
-			try {
-				const response = await perfilServices.show(params);
-				this.datos = response.data.data;
-				this.getEmpresa(this.datos.empresa);
-			} catch (error) {
-				console.error("Error:", error);
-			}
-		},
 		async getEmpresa(idEmpresa) {
 			try {
 				const response = await catalogosServices.getCatalogosByCodigo(13);
@@ -124,11 +118,12 @@ export default {
 		handleClick() {
 			alert("Botón personalizado clicado");
 		},
-	},
-	async mounted() {
 
-		await this.getInfo();
-		await this.getCatalogosByCodigo(this.datos.empresa);
+	},
+
+	async mounted() {
+		this.userData = this.currentUserVariable.perfilData;
+		this.getEmpresa(this.userData.empresa);
 	}
 };
 </script>

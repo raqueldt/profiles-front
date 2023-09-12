@@ -169,7 +169,7 @@ export default {
         //     setCurrentUser(null);
         // },
         signOut({ commit }) {
-            
+
             commit('destroyToken')
             setCurrentUser(null);
 

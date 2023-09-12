@@ -1,46 +1,45 @@
 <template>
 	<div>
-		<!-- {{ datos }} -->
 
 		<b-row>
 			<b-col>
-				<CardBasic title="Mi ingreso" :text=datos.fecha_ingreso_atc :svg="getPerfilById('date').svg" />
+				<CardBasic title="Mi ingreso" :text=userData.fecha_ingreso_atc :svg="getPerfilById('date').svg" />
 			</b-col>
 			<b-col>
-				<CardBasic title="Mi cumpleaños" :text=datos.fecha_nacimiento :svg="getPerfilById('birthday').svg" />
+				<CardBasic title="Mi cumpleaños" :text=userData.fecha_nacimiento :svg="getPerfilById('birthday').svg" />
 			</b-col>
 			<b-col md="3">
-				<CardBasic title="Mi Ext." :text=datos.extension :svg="getPerfilById('extension').svg" />
+				<CardBasic title="Mi Ext." :text=userData.extension :svg="getPerfilById('extension').svg" />
 			</b-col>
 		</b-row>
 		<b-row>
 
 			<b-col>
 				<CardBasic title="Días disponibles" :text="sumarValores({
-					valor1: datos.dias_vacaciones,
-					valor2: datos.dias_feriado_carnaval,
-					valor3: datos.dias_feriado_difuntos,
-					valor4: datos.dias_descuento
+					valor1: userData.dias_vacaciones,
+					valor2: userData.dias_feriado_carnaval,
+					valor3: userData.dias_feriado_difuntos,
+					valor4: userData.dias_descuento
 				})" :svg="getPerfilById('disponibles').svg" />
 			</b-col>
 			<b-col>
 
-				<CardBasic title="Mi contrato" :text=datos.tipo_contrato_texto :svg="getPerfilById('contrato').svg" />
+				<CardBasic title="Mi contrato" :text=userData.tipo_contrato_texto :svg="getPerfilById('contrato').svg" />
 			</b-col>
-			<b-col md="3" v-if="datos.codigo_37">
-				<CardBasic title="S37" :text=datos.codigo_37 :svg="getPerfilById('s37').svg" />
+			<b-col md="3" v-if="userData.codigo_37">
+				<CardBasic title="S37" :text=userData.codigo_37 :svg="getPerfilById('s37').svg" />
 			</b-col>
 
 		</b-row>
 		<b-row>
 			<b-col>
-				<CardBasic title="Biométrico" :text=datos.id_biometrico :svg="getPerfilById('biometrico').svg" />
+				<CardBasic title="Biométrico" :text=userData.id_biometrico :svg="getPerfilById('biometrico').svg" />
 			</b-col>
 			<b-col md="6">
-				<CardBasic title="Mi correo" :text=datos.email_personal :svg="getPerfilById('correo').svg" />
+				<CardBasic title="Mi correo" :text=userData.email_personal :svg="getPerfilById('correo').svg" />
 			</b-col>
 			<b-col>
-				<CardBasic title="Dirección" :text=datos.direccion :svg="getPerfilById('direccion').svg" />
+				<CardBasic title="Dirección" :text=userData.direccion :svg="getPerfilById('direccion').svg" />
 			</b-col>
 
 		</b-row>
@@ -49,40 +48,53 @@
 		</div>
 		<b-row class="bg-white m-1 text-center">
 			<b-col>
-				<span>{{ datos.contacto_emergencia }}</span>
-				<!-- <CardBasic title="Contacto" :text=datos.contacto_emergencia :svg="getPerfilById('llamada').svg" /> -->
+				<span>{{ userData.contacto_emergencia }}</span>
 			</b-col>
 			<b-col>
-				<span>{{ datos.direccion_emergencia }}</span>
-				<!-- <CardBasic title="Dirección" :text=datos.direccion_emergencia :svg="getPerfilById('direccion').svg" /> -->
+				<span>{{ userData.direccion_emergencia }}</span>
 			</b-col>
 			<b-col>
-				<span>{{ datos.numero_emergencia }}</span>
-				<!-- <CardBasic title="Número" :text=datos.numero_emergencia :svg="getPerfilById('llamada').svg" /> -->
+				<span>{{ userData.numero_emergencia }}</span>
 			</b-col>
 
 		</b-row>
 	</div>
 </template>
 
+
 <script>
-// import Card from '../../../../../components/UI/Card/Card.vue';
 import CardBasic from '../../../../../components/UI/Card/CardBasic.vue';
 import perfiles from '../../../../../components/UI/IndexSVG/svg';
+import { mapGetters } from "vuex";
 export default {
+	props: ['datosPestana1'],
 	name: 'Pestana1Component',
 	components: {
 		CardBasic,
 	},
-	props: {
-		datos: Object // Declaración de la prop datos
-	},
 	data() {
 		return {
 			perfiles: perfiles,
+			userData: [],
+			nombreEmpresa: ''
 		}
 	},
+
+	computed: {
+		...mapGetters({
+			currentUser: "currentUser"
+		}),
+
+		loggedUser: function () {
+			return this.$store.state.user.currentUser["id"];
+		},
+		currentUserVariable() {
+			return this.currentUser;
+		}
+	},
+
 	methods: {
+
 		getPerfilById(id) {
 			return this.perfiles.find(perfil => perfil.id === id);
 		},
@@ -96,6 +108,10 @@ export default {
 			}
 		},
 	},
+	async mounted() {
+		this.userData = this.currentUserVariable.perfilData;
+	}
+
 };
 </script>
 
