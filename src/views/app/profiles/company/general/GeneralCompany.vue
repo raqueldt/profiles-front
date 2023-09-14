@@ -1,32 +1,27 @@
 <template>
 	<div>
 		<b-card>
-			<b-card-header>
-				<div class="d-flex justify-content-between align-items-center mb-3">
-					<h5 class="m-0">Usuarios</h5>
-					<ButtonBasic variant="primary" text="New User" @click="handleClick" />
-				</div>
 
-
-			</b-card-header>
-			<TableBasic :items="datos" :fields="datos" :perPage="5" :options="opciones" />
-			<b-card-footer class="text-right">
-				<h4 class="text-muted">Total usuarios: {{ datos.length }}</h4>
-			</b-card-footer>
+			<!-- jaj -->
+			<empresa></empresa>
+			<!-- <TableBasic :items="datos" :fields="datos" :perPage="5" :options="opciones" /> -->
 		</b-card>
+
 	</div>
 </template>
 
 <script>
-import internoServices from "../../../../../services/profiles/interno/internoServices";
+import internoServices from "../../../../../services/profiles/empresa/EmpresaServices";
 import { mapGetters } from "vuex";
 import TableBasic from '../../../../../components/UI/Tables/TableBasic.vue';
 import ButtonBasic from '../../../../../components/UI/Button/ButtonBasic.vue';
+import empresa from '../empresa/empresa.vue';
 
 export default {
 	components: {
 		TableBasic,
-		ButtonBasic
+		ButtonBasic,
+		empresa
 	},
 	name: "GeneralCompany",
 	data() {
@@ -110,16 +105,9 @@ export default {
 	methods: {
 		async getInfo() {
 			try {
-				const response = await internoServices.getAllUsersActive(),
-					filteredData = response.data.data.map(item => {
-						return {
-							nombre_completo: item.nombre_completo,
-							email: item.email,
-							departamento: item.departamento,
-							extension: item.extension,
-						};
-					});
-				this.datos = filteredData;
+				const response = await internoServices.getAll()
+
+				this.datos = response.data.data;
 				console.log(this.datos);
 			} catch (error) {
 				console.error("Error:", error);

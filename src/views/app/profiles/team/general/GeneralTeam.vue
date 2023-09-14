@@ -1,5 +1,15 @@
 <template>
 	<div>
+		<!-- {{ modalVisible }} -->
+		<ModalBasic :show-modal="modalVisible" :modal-size="modalSize" @close="closeModal">
+			<template v-if="modalContent.component">
+				<component :is="modalContent.component"></component>
+			</template>
+		</ModalBasic>
+
+		<!-- <User></User> -->
+
+
 		<b-card>
 			<b-card-header>
 				<div class="d-flex justify-content-between align-items-center mb-3">
@@ -22,16 +32,26 @@ import internoServices from "../../../../../services/profiles/interno/internoSer
 import { mapGetters } from "vuex";
 import TableBasic from '../../../../../components/UI/Tables/TableBasic.vue';
 import ButtonBasic from '../../../../../components/UI/Button/ButtonBasic.vue';
+import ModalBasic from '../../../../../components/UI/Modal/ModalBasic.vue';
+import User from '../user/createuser.vue';
 
 export default {
 	components: {
 		TableBasic,
-		ButtonBasic
+		ButtonBasic,
+		ModalBasic,
+		User
 	},
 	name: "GeneralInterno",
 	data() {
 		return {
 			datos: [],
+			modalVisible: false,
+			modalContent: {
+				title: 'Título del Modal',
+				text: 'Contenido del Modal'
+			},
+			modalSize: 'xl',
 			opciones: {
 				highlightMatches: true,
 				sortable: true,
@@ -125,8 +145,16 @@ export default {
 				console.error("Error:", error);
 			}
 		},
+		openModal() {
+			this.modalVisible = true;
+		},
 		handleClick() {
-			alert("Botón personalizado clicado");
+			this.modalVisible = true;
+			this.modalContent.component = User;
+		},
+
+		closeModal() {
+			this.modalVisible = false;
 		},
 	},
 	async mounted() {

@@ -43,7 +43,7 @@ const routes = [
         path: "/app/company",
         beforeEnter: AuthRequired,
         props: true,
-        name: "Team",
+        name: "Company",
         component: () =>
           import("@/views/app/profiles/company/MainCompany")
       },

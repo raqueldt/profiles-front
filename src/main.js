@@ -29,6 +29,9 @@ import 'firebase/auth'
 import { getCurrentLanguage } from './utils'
 import moment from "moment";
 
+import { ClientTable } from 'vue-tables-2';
+
+Vue.use(ClientTable);
 
 
 import { ValidationProvider, extend } from 'vee-validate';
