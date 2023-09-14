@@ -40,6 +40,14 @@ const routes = [
           import("@/views/app/profiles/team/MainTeam")
       },
       {
+        path: "/app/company",
+        beforeEnter: AuthRequired,
+        props: true,
+        name: "Team",
+        component: () =>
+          import("@/views/app/profiles/company/MainCompany")
+      },
+      {
         path: "/app/perfil",
         beforeEnter: AuthRequired,
         props: true,
