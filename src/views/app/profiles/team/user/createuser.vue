@@ -107,7 +107,6 @@ export default {
 				.then(response => {
 					console.log("usuario creado", response)
 
-
 				})
 				.catch(error => {
 					console.log(error);
@@ -121,13 +120,7 @@ export default {
 		}
 	},
 	mounted() {
-		// InternoServices.getAll()
-		// 	.then(response => {
-		// 		console.log("traer", response.data)
-		// 	})
-		// 	.catch(error => {
-		// 		console.log(error);
-		// 	}).finally(() => this.clear());
+
 	},
 };
 </script>

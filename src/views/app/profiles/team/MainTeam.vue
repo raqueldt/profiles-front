@@ -8,8 +8,6 @@
 			</b-colxx>
 		</b-row>
 
-
-		<!-- MAIN TALENTO HUMANO -->
 		<general></general>
 
 	</div>

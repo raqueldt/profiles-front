@@ -5,10 +5,6 @@ const resource = "/api/newinterno/";
 const server = Conf.server;
 
 export default {
-  getAll() {
-    let url = server + resource + "getAll";
-    return Axios.get(url);
-  },
   create(data) {
     console.log("neww", data);
     let url = server + resource + "createUser";
@@ -25,5 +21,5 @@ export default {
   getAllUsersPassive() {
     let url = server + resource + "getAllUsersPassive";
     return Axios.get(url);
-  }
+  },
 };

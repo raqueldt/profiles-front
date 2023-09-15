@@ -1,28 +1,22 @@
 <template>
 	<div>
-		<!-- {{ modalVisible }} -->
 		<ModalBasic :show-modal="modalVisible" :modal-size="modalSize" @close="closeModal">
 			<template v-if="modalContent.component">
 				<component :is="modalContent.component"></component>
 			</template>
 		</ModalBasic>
-
 		<!-- <User></User> -->
 
 
 		<b-card>
 			<b-card-header>
 				<div class="d-flex justify-content-between align-items-center mb-3">
-					<h5 class="m-0">Usuarios</h5>
+					<h5 class="m-0">Usuarios | <small> {{ datos.length }} </small>
+					</h5>
 					<ButtonBasic variant="primary" text="New User" @click="handleClick" />
 				</div>
-
-
 			</b-card-header>
 			<TableBasic :items="datos" :fields="datos" :perPage="5" :options="opciones" />
-			<b-card-footer class="text-right">
-				<h4 class="text-muted">Total usuarios: {{ datos.length }}</h4>
-			</b-card-footer>
 		</b-card>
 	</div>
 </template>
