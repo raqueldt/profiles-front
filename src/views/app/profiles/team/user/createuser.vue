@@ -10,8 +10,6 @@
 				<p :class="['step-title', { 'text-primary': index === currentStep - 1 }]">{{ getStepTitle(index + 1) }}</p>
 			</b-col>
 		</b-row>
-
-		<hr>
 		<b-row class="justify-content-center">
 			<b-col>
 				<component :is="stepComponents[currentStep - 1]" :formData="formData" :title="getStepTitle(currentStep)"
@@ -69,7 +67,7 @@ export default {
 			totalSteps: 6,
 			stepComponents: [Step1, Step2, Step3, Step4, Step5, Step6],
 			stepTitles: [
-				"Información Personal",
+				"General",
 				"Personal",
 				"Salary / Position",
 				"Location / Contact",
@@ -123,14 +121,13 @@ export default {
 		}
 	},
 	mounted() {
-		InternoServices.getAll()
-			.then(response => {
-				console.log("traer", response.data)
-				// this.displayMessage();
-			})
-			.catch(error => {
-				console.log(error);
-			}).finally(() => this.clear());
+		// InternoServices.getAll()
+		// 	.then(response => {
+		// 		console.log("traer", response.data)
+		// 	})
+		// 	.catch(error => {
+		// 		console.log(error);
+		// 	}).finally(() => this.clear());
 	},
 };
 </script>
@@ -148,8 +145,8 @@ export default {
 }
 
 .step-indicator {
-	width: 30px;
-	height: 30px;
+	width: 25px;
+	height: 25px;
 	border-radius: 50%;
 	border: 1px solid #ccc;
 	display: flex;
