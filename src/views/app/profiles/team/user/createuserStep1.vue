@@ -2,8 +2,6 @@
 	<div>
 		<b-form @submit.prevent="nextStep" ref="myForm">
 			<b-card>
-				dinamic: {{ formData.rolesDinamics }}<br>
-				{{ formData.roles }}
 				<b-row>
 					<b-col cols="12" md="4">
 						<b-form-group label-for="name">

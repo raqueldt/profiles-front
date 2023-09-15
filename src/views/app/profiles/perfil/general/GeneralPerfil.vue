@@ -5,15 +5,15 @@
 		<b-container fluid>
 			<b-row>
 				<b-col md="4">
-						<Card :title=userData.nombre_completo :imageSrc=currentUser.img :subtitle=userData.cargo :text=nombreEmpresa
-						:adicional="[
+					<Card :title=userData.nombre_completo :imageSrc=currentUser.img :subtitle=userData.cargo
+						:text=nombreEmpresa :adicional="[
 							{ titulo: 'Departamento', texto: userData.departamento },
 							{ titulo: 'Identificación', texto: userData.identificacion },
 							{ titulo: 'Correo', texto: userData.email },
 							{ titulo: 'Contacto', texto: userData.numero_contacto },
 							{ titulo: 'Acumula décimos', texto: userData.acumula_decimos },
 							{ titulo: 'Discapacidad', texto: userData.posee_discapacidad },
-						]" />
+						]"></Card>
 
 					<b-card class="m-1">
 						<b-row>
@@ -27,14 +27,17 @@
 				<b-col md="8">
 
 					<TabsDinamicas :tabs="pestanas" />
-
+					<hr>
 
 				</b-col>
 			</b-row>
+			<b-card>
+				<CargasFamiliares></CargasFamiliares>
+			</b-card>
 		</b-container>
 
 
-		<pre> {{ userData }} </pre>
+		<!-- <pre> {{ userData }} </pre> -->
 
 
 	</div>
@@ -49,6 +52,7 @@ import CardBasic from '../../../../../components/UI/Card/CardBasic.vue';
 import ButtonBasic from '../../../../../components/UI/Button/ButtonBasic.vue';
 import TabsDinamicas from '../../../../../components/UI/Tab/TabsDinamicas.vue';
 import perfiles from '../../../../../components/UI/IndexSVG/svg';
+import CargasFamiliares from '../cargasfamiliares/CargasFamiliares.vue';
 
 import Pestana1Component from '../general/Pestana1Component.vue';
 import Pestana2Component from '../general/Pestana2Component.vue';
@@ -66,6 +70,7 @@ export default {
 		Pestana2Component,
 		Pestana3Component,
 		Pestana4Component,
+		CargasFamiliares
 
 	},
 	name: "GeneralPerfil",
