@@ -106,7 +106,7 @@ export default {
 			InternoServices.create(this.formData)
 				.then(response => {
 					console.log("usuario creado", response)
-
+					this.$emit('usuario-creado'); // Emitir el evento
 				})
 				.catch(error => {
 					console.log(error);

@@ -2,7 +2,7 @@
 	<div>
 		<ModalBasic :show-modal="modalVisible" :modal-size="modalSize" @close="closeModal">
 			<template v-if="modalContent.component">
-				<component :is="modalContent.component"></component>
+				<component :is="modalContent.component" @usuario-creado="closeModal"></component>
 			</template>
 		</ModalBasic>
 		<!-- <User></User> -->
@@ -150,6 +150,8 @@ export default {
 		closeModal() {
 			this.modalVisible = false;
 		},
+
+
 	},
 	async mounted() {
 		await this.getInfo();

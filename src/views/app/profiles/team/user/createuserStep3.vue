@@ -5,7 +5,7 @@
 				<h4>General</h4>
 			</header>
 			<b-row>
-				<b-col lg="8" class="form-group">
+				<b-col lg="9" class="form-group">
 					<b-row>
 
 						<b-col lg="" class="form-group">
@@ -29,7 +29,7 @@
 						</b-col>
 					</b-row>
 					<b-row>
-						<b-col lg="4" class="form-group">
+						<b-col lg="5" class="form-group">
 							<label for="cargo_id" class="control-label">Position</label>
 							<span class="text-danger">*</span>
 							<b-form-select v-model="formData.cargo_id" id="cargo_id" :options="filteredCargosOptions"
@@ -42,7 +42,7 @@
 								:options="tipoContratoOptions" style="width:100%"></b-form-select>
 						</b-col>
 
-						<b-col lg="3">
+						<b-col lg="2">
 							<b-form-group label="Salary" label-for="sueldo">
 								<b-form-input v-model="formData.sueldo" id="sueldo" type="number"
 									placeholder="Ingrese el salario" />
@@ -59,10 +59,10 @@
 					</b-row>
 
 				</b-col>
-				<b-col lg="4" md="2">
+				<b-col lg="3" md="2">
 					<b-form-group label="Funciones" label-for="Funciones">
 						<b-form-textarea v-model="formData.funciones" id="funciones"
-							placeholder="Ingrese funciones adicionales" style="height: 50px !important;" />
+							placeholder="Ingrese funciones adicionales" style="height: 130px !important;" />
 					</b-form-group>
 				</b-col>
 			</b-row>
