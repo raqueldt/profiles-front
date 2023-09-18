@@ -34,6 +34,7 @@ import { ClientTable } from 'vue-tables-2';
 Vue.use(ClientTable);
 
 
+
 import { ValidationProvider, extend } from 'vee-validate';
 //Vue.component('ValidationProvider', VeeValidate.ValidationProvider);
 
