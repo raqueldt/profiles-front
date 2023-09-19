@@ -1,9 +1,22 @@
 <template>
 	<div>
-		<b-card>
+		<ModalBasic :show-modal="modalVisible" :modal-size="modalSize" @close="closeModal">
+			<template v-if="modalContent.component">
+				<component :is="modalContent.component" @empresa-creada="closeModal"></component>
+			</template>
+		</ModalBasic>
 
-			<!-- jaj -->
+		<b-card>
+			<b-card-header>
+				<div class="d-flex justify-content-between align-items-center mb-3">
+					<h5 class="m-0">Usuarios | <small> {{ datos.length }} </small>
+					</h5>
+					<ButtonBasic variant="primary" text="New Company" @click="handleClick" />
+				</div>
+			</b-card-header>
 			<empresa></empresa>
+		</b-card>
+		<b-card hidden>
 			<!-- <TableBasic :items="datos" :fields="datos" :perPage="5" :options="opciones" /> -->
 		</b-card>
 
@@ -14,18 +27,28 @@
 import internoServices from "../../../../../services/profiles/empresa/EmpresaServices";
 import { mapGetters } from "vuex";
 import TableBasic from '../../../../../components/UI/Tables/TableBasic.vue';
-import ButtonBasic from '../../../../../components/UI/Button/ButtonBasic.vue';
 import empresa from '../empresa/empresa.vue';
-
+import ModalBasic from '../../../../../components/UI/Modal/ModalBasic.vue';
+import ButtonBasic from '../../../../../components/UI/Button/ButtonBasic.vue';
+import Company from '../create/createCompany.vue';
 export default {
 	components: {
 		TableBasic,
 		ButtonBasic,
-		empresa
+		empresa,
+		ModalBasic,
+		Company
+
 	},
 	name: "GeneralCompany",
 	data() {
 		return {
+			modalSize: 'm',
+			modalVisible: false,
+			modalContent: {
+				title: 'Título del Modal',
+				text: 'Contenido del Modal'
+			},
 			datos: [],
 			opciones: {
 				highlightMatches: true,
@@ -113,8 +136,16 @@ export default {
 				console.error("Error:", error);
 			}
 		},
+		openModal() {
+			this.modalVisible = true;
+		},
 		handleClick() {
-			alert("Botón personalizado clicado");
+			this.modalVisible = true;
+			this.modalContent.component = Company;
+		},
+
+		closeModal() {
+			this.modalVisible = false;
 		},
 	},
 	async mounted() {
