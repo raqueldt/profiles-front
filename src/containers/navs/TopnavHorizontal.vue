@@ -134,9 +134,9 @@
 							</div>
 
 							<div class="p-1 mt-2 ml-2">
-								<router-link tag="a" :to="`${adminRoot}/targets`">
+								<router-link tag="a" :to="`${adminRoot}/instructivo`">
 									<i class="glyph-icon iconsminds-files h6 m-0"
-										v-tooltip="{ content: 'Targets', placement: 'top' }"></i>
+										v-tooltip="{ content: 'Instructivo', placement: 'top' }"></i>
 								</router-link>
 							</div>
 							<div class="p-1 mt-2">
@@ -274,7 +274,7 @@ import {
 } from "../../constants/config";
 import { getDirection, setDirection, getThemeColor, setThemeColor } from "../../utils";
 import menuItems from "../../constants/menuHorizonal";
-import submenuItemsreport from "../../constants/submenuHorizonal";
+import submenuItemsreport from "../../constants/submenuReport";
 import submenuItemstthh from "../../constants/submenuTalentoHumano";
 export default {
 	components: {

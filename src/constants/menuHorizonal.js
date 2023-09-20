@@ -7,7 +7,7 @@ const data = [
     id: "dashboard",
     icon: "simple-icon-grid",
     label: "profiles.dashboard",
-    to: `${adminRoot}/dashboard`
+    to: `${adminRoot}/dashboard`,
   },
   // {
   //     id: "newAvailability",
@@ -19,7 +19,7 @@ const data = [
     id: "team",
     icon: "iconsminds-user",
     label: "profiles.team",
-    to: `/app/team`
+    to: `/app/team`,
   },
   //   {
   //     id: "ratesmanager",
@@ -63,19 +63,20 @@ const data = [
     id: "company",
     icon: "iconsminds-the-white-house",
     label: "Company",
-    to: `/app/company`
+    to: `/app/company`,
   },
   {
     id: "tthh",
     icon: "iconsminds-diploma-2",
     label: "TTHH",
-    to: ``
+    to: ``,
   },
   {
     id: "reports",
     icon: "iconsminds-line-chart-1",
     label: "Reports",
-    to: ``
-  }
+    to: ``,
+  },
+
 ];
 export default data;

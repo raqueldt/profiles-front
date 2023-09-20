@@ -96,7 +96,13 @@ const routes = [
         beforeEnter: AuthRequired,
         component: () => import("@/views/app/profiles/departamentos/Main"),
       },
-
+      {
+        path: "instructivo",
+        props: true,
+        name: "instructivo",
+        beforeEnter: AuthRequired,
+        component: () => import("@/views/app/profiles/instructivo/Main"),
+      },
       /* ******************* GPS ******************* */
 
       {
