@@ -4,13 +4,13 @@
 
 		<b-container fluid>
 			<b-row>
-			RESULTADOS BUSQUEDA <br>
+				RESULTADOS BUSQUEDA <br>
 
-				VISTA: BSUQUEDA USUARIOS O  EMPRESAS
+				VISTA: BSUQUEDA USUARIOS O EMPRESAS
 			</b-row>
-
+			buscar
+			<search></search>
 		</b-container>
-
 
 		<!-- <pre> {{ userData }} </pre> -->
 
@@ -20,10 +20,11 @@
 
 <script>
 import { mapGetters } from "vuex";
+import search from "../collectionSearch/collectionSearch.vue"
 
 export default {
 	components: {
-
+		search
 	},
 	name: "General",
 	data() {
