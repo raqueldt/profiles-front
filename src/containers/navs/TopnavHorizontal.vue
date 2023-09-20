@@ -212,6 +212,12 @@
 											<!-- Rol de pagos											{{ tthh=true }} -->
 											{{ detail.label }}</a>
 									</span>
+									<span v-if="item.label == 'Descarga'"> <b-icon-arrow-right-short
+											:class="{ 'bg-primary': ruta == detail.to }">
+										</b-icon-arrow-right-short> <a :href=detail.to>
+											<!-- Rol de pagos											{{ tthh=true }} -->
+											{{ detail.label }}</a>
+									</span>
 								</div>
 							</div>
 						</b-tab>

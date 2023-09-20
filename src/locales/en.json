@@ -5,7 +5,12 @@
 		"perfil": "Perfil",
 		"noticias": "Noticias",
 		"rolpagos": "Rol de pagos",
-		"documentos": "Documentos"
+		"documentos": "Documentos",
+		"cargasfamiliares": "Cargas familiares",
+		"feriados": "Feriados",
+
+
+		"ultimo": "Cargas familiares"
 	},
 	"titles": {
 		"home": "Home",
@@ -16,7 +21,12 @@
 		"company": "Company",
 		"noticias": "Actualización de noticias",
 		"rolpagos": "Actualización de rol de pagos",
-		"documentos": "Documentos"
+		"documentos": "Documentos",
+		"cargasfamiliares": "Descargar cargas familiares",
+		"feriados": "Administración de Feriados",
+
+
+		"ultimo": "Cargas familiares"
 	},
 	"general": {
 		"copyright": "Piaf Vue © 2018 All Rights Reserved."
