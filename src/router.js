@@ -36,14 +36,14 @@ const routes = [
         beforeEnter: AuthRequired,
         props: true,
         name: "Team",
-        component: () => import("@/views/app/profiles/team/MainTeam"),
+        component: () => import("@/views/app/profiles/team/Main"),
       },
       {
         path: "/app/company",
         beforeEnter: AuthRequired,
         props: true,
         name: "Company",
-        component: () => import("@/views/app/profiles/company/MainCompany"),
+        component: () => import("@/views/app/profiles/company/Main"),
       },
       {
         path: "/app/perfil",
@@ -58,7 +58,7 @@ const routes = [
         path: "/tthh/noticias",
         name: "noticias",
         beforeEnter: AuthRequired,
-        component: () => import("@/views/app/profiles/noticias/MainNoticias"),
+        component: () => import("@/views/app/profiles/noticias/Main"),
       },
       {
         path: "/tthh/rolpagos",
@@ -83,6 +83,18 @@ const routes = [
         name: "feriados",
         beforeEnter: AuthRequired,
         component: () => import("@/views/app/profiles/feriados/Main"),
+      },
+      {
+        path: "/tthh/formulario107",
+        name: "formulario107",
+        beforeEnter: AuthRequired,
+        component: () => import("@/views/app/profiles/formulario107/Main"),
+      },
+      {
+        path: "/tthh/departamentos",
+        name: "departamentos",
+        beforeEnter: AuthRequired,
+        component: () => import("@/views/app/profiles/departamentos/Main"),
       },
 
       /* ******************* GPS ******************* */

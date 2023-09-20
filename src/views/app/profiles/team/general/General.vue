@@ -41,7 +41,7 @@ export default {
 		ModalBasic,
 		User
 	},
-	name: "GeneralInterno",
+	name: "General",
 	data() {
 		return {
 			datos: [],

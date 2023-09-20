@@ -23,7 +23,7 @@ export default {
 	components: {
 
 	},
-	name: "GeneralPerfil",
+	name: "General",
 	data() {
 		return {
 			userData: []

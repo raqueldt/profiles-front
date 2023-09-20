@@ -8,16 +8,18 @@
 			</b-colxx>
 		</b-row>
 
+
+		<!-- MAIN TALENTO HUMANO -->
 		<general></general>
 
 	</div>
 </template>
 
 <script>
-import general from "./general/GeneralTeam.vue"
+import general from "./general/General.vue"
 
 export default {
-	name: 'MainTeam',
+	name: 'MainCompany',
 	components: {
 		general
 	}

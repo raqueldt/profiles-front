@@ -3,26 +3,25 @@
 
 		<b-row>
 			<b-colxx xxs="12">
-				<piaf-breadcrumb :heading="$t('profiles.team')" />
+				<piaf-breadcrumb :heading="$t('profiles.noticias')" />
 				<div class="separator mb-2"></div>
 			</b-colxx>
 		</b-row>
 
-
-		<!-- MAIN TALENTO HUMANO -->
 		<general></general>
 
 	</div>
 </template>
 
 <script>
-import general from "./general/GeneralCompany.vue"
+import general from "./general/General.vue"
 
 export default {
-	name: 'MainCompany',
+	name: 'Main',
 	components: {
 		general
 	}
+
 }
 
 </script>

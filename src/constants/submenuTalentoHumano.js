@@ -36,13 +36,13 @@ const data = [
       {
         id: "sales-by-travel",
         label: "Formulario 107",
-        to: `/sales-by-travel`,
+        to: `/tthh/formulario107`,
       },
 
       {
         id: "cruise-itinerary-sales",
         label: "Departamentos",
-        to: `/oniric/cruise-itinerary-sales`,
+        to: `/tthh/departamentos`,
       },
     ],
   },

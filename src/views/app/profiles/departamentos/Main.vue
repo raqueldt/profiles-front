@@ -3,7 +3,7 @@
 
 		<b-row>
 			<b-colxx xxs="12">
-				<piaf-breadcrumb :heading="$t('profiles.noticias')" />
+				<piaf-breadcrumb :heading="$t('profiles.departamentos')" />
 				<div class="separator mb-2"></div>
 			</b-colxx>
 		</b-row>
@@ -14,10 +14,10 @@
 </template>
 
 <script>
-import general from "./general/GeneralNoticias.vue"
+import general from "./general/General.vue"
 
 export default {
-	name: 'MainNoticias',
+	name: 'Main',
 	components: {
 		general
 	}
