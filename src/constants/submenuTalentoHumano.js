@@ -13,7 +13,7 @@ const data = [
       {
         id: "oniric-financial-analysis-weeks",
         label: "Noticias",
-        to: `/oniric/financial-analysis-weeks`
+        to: `/tthh/noticias`
       },
       {
         id: "cruise-sales-overview",

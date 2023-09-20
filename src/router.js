@@ -10,7 +10,7 @@ const routes = [
   {
     path: "/",
     component: () => import("./views/home"),
-    redirect: "./user/login"
+    redirect: "./user/login",
   },
   {
     path: adminRoot,
@@ -28,7 +28,7 @@ const routes = [
         props: true,
         name: "main-dashboard",
         beforeEnter: AuthRequired,
-        component: () => import("./views/app/profiles/dashboard/MainDashboard")
+        component: () => import("./views/app/profiles/dashboard/MainDashboard"),
       },
 
       {
@@ -36,24 +36,29 @@ const routes = [
         beforeEnter: AuthRequired,
         props: true,
         name: "Team",
-        component: () =>
-          import("@/views/app/profiles/team/MainTeam")
+        component: () => import("@/views/app/profiles/team/MainTeam"),
       },
       {
         path: "/app/company",
         beforeEnter: AuthRequired,
         props: true,
         name: "Company",
-        component: () =>
-          import("@/views/app/profiles/company/MainCompany")
+        component: () => import("@/views/app/profiles/company/MainCompany"),
       },
       {
         path: "/app/perfil",
         beforeEnter: AuthRequired,
         props: true,
         name: "Perfil",
-        component: () =>
-          import("@/views/app/profiles/perfil/MainPerfil")
+        component: () => import("@/views/app/profiles/perfil/MainPerfil"),
+      },
+
+      //SUBMENU TALAENTO HUMANO
+      {
+        path: "/tthh/noticias",
+        name: "noticias",
+        beforeEnter: AuthRequired,
+        component: () => import("@/views/app/profiles/noticias/MainNoticias"),
       },
 
       /* ******************* GPS ******************* */
@@ -64,7 +69,7 @@ const routes = [
         props: true,
         name: "AvailabilityV2",
         component: () =>
-          import("@/views/app/gps/availability/v2/AvailabilityV2")
+          import("@/views/app/gps/availability/v2/AvailabilityV2"),
       },
 
       {
@@ -73,7 +78,7 @@ const routes = [
         name: "target",
         alias: "/app/gps/targets/targets",
         beforeEnter: AuthRequired,
-        component: () => import("./views/app/gps/targets/Targets")
+        component: () => import("./views/app/gps/targets/Targets"),
       },
       {
         path: "targetProgressDetails",
@@ -84,7 +89,7 @@ const routes = [
         component: () =>
           import(
             "./views/app/gps/targets/components/TargetsMonthlyProgressDetails"
-          )
+          ),
       },
 
       {
@@ -93,7 +98,7 @@ const routes = [
         props: true,
         name: "newAvailability",
         component: () =>
-          import("./views/app/gps/availability/components/Availability.vue")
+          import("./views/app/gps/availability/components/Availability.vue"),
       },
 
       // -----------  BOOKINGS -----------
@@ -102,7 +107,7 @@ const routes = [
         props: true,
         name: "booking",
         beforeEnter: AuthRequired,
-        component: () => import("./views/app/gps/bookings/SlotsParent.vue")
+        component: () => import("./views/app/gps/bookings/SlotsParent.vue"),
       },
 
       {
@@ -111,7 +116,7 @@ const routes = [
         name: "SlotsParentEdit",
         beforeEnter: AuthRequired,
         component: () =>
-          import("./views/app/gps/bookings/edit/SlotsParentEdit.vue")
+          import("./views/app/gps/bookings/edit/SlotsParentEdit.vue"),
       },
 
       {
@@ -120,7 +125,7 @@ const routes = [
         name: "slotspreview",
         alias: "/app/gps/slotspreview",
         beforeEnter: AuthRequired,
-        component: () => import("./views/app/gps/bookings/SlotsPreview.vue")
+        component: () => import("./views/app/gps/bookings/SlotsPreview.vue"),
       },
 
       {
@@ -128,7 +133,7 @@ const routes = [
         name: "UrgentPaymentsAll",
         beforeEnter: AuthRequired,
         component: () =>
-          import("./views/app/gps/collections/dashboard/UrgentPaymentsAll.vue")
+          import("./views/app/gps/collections/dashboard/UrgentPaymentsAll.vue"),
       },
 
       {
@@ -136,7 +141,9 @@ const routes = [
         name: "OverduePaymentsAll",
         beforeEnter: AuthRequired,
         component: () =>
-          import("./views/app/gps/collections/dashboard/OverduePaymentsAll.vue")
+          import(
+            "./views/app/gps/collections/dashboard/OverduePaymentsAll.vue"
+          ),
       },
 
       {
@@ -144,7 +151,7 @@ const routes = [
         name: "RecentPaymentsAll",
         beforeEnter: AuthRequired,
         component: () =>
-          import("./views/app/gps/collections/dashboard/RecentPaymentsAll.vue")
+          import("./views/app/gps/collections/dashboard/RecentPaymentsAll.vue"),
       },
 
       {
@@ -152,7 +159,7 @@ const routes = [
         name: "DuePaymentsAll",
         beforeEnter: AuthRequired,
         component: () =>
-          import("./views/app/gps/collections/dashboard/DuePaymentsAll.vue")
+          import("./views/app/gps/collections/dashboard/DuePaymentsAll.vue"),
       },
 
       {
@@ -162,7 +169,7 @@ const routes = [
         component: () =>
           import(
             "./views/app/gps/collections/notasCredito/collectionNotasCredito.vue"
-          )
+          ),
       },
 
       {
@@ -171,7 +178,7 @@ const routes = [
         name: "quote",
         alias: "/app/gps/quote",
         beforeEnter: AuthRequired,
-        component: () => import("./views/app/gps/quote/components/Quote.vue")
+        component: () => import("./views/app/gps/quote/components/Quote.vue"),
       },
       {
         path: "/quotepreview/:cotId",
@@ -180,7 +187,7 @@ const routes = [
         alias: "/app/gps/quotepreview",
         beforeEnter: AuthRequired,
         component: () =>
-          import("./views/app/gps/quote/components/QuotePreview.vue")
+          import("./views/app/gps/quote/components/QuotePreview.vue"),
       },
       {
         path: "/quotepreviewgroup/:gctId",
@@ -189,7 +196,7 @@ const routes = [
         alias: "/app/gps/quotepreviewgroup",
         beforeEnter: AuthRequired,
         component: () =>
-          import("./views/app/gps/quote/components/QuotePreviewGroup.vue")
+          import("./views/app/gps/quote/components/QuotePreviewGroup.vue"),
       },
 
       {
@@ -197,16 +204,15 @@ const routes = [
         props: true,
         name: "quoteservices",
         beforeEnter: AuthRequired,
-        component: () => import("./views/app/gps/quote/QuoteServices.vue")
+        component: () => import("./views/app/gps/quote/QuoteServices.vue"),
       },
       {
         path: "gps/quote/quotepreviewpdf",
         props: true,
         name: "quotepreviewpdf",
         beforeEnter: AuthRequired,
-        component: () => import("./views/app/gps/quote/QuotePreviewPDF.vue")
+        component: () => import("./views/app/gps/quote/QuotePreviewPDF.vue"),
       },
-
 
       {
         path: "ratesmanager/ratesmanager",
@@ -214,7 +220,7 @@ const routes = [
         name: "ratesmanager",
         beforeEnter: AuthRequired,
         component: () =>
-          import("./views/app/ratesmanager/RatesManagerDashboard")
+          import("./views/app/ratesmanager/RatesManagerDashboard"),
       },
 
       // ----------- CONFIRMATIONS -----------
@@ -222,14 +228,14 @@ const routes = [
         path: "/confirmations/:cofId",
         props(route) {
           return {
-            cofId: parseInt(route.params.cofId)
+            cofId: parseInt(route.params.cofId),
           };
         },
         name: "confirmations",
         alias: "/app/gps/confirmations",
         beforeEnter: AuthRequired,
         component: () =>
-          import("./views/app/gps/confirmations/Confirmations.vue")
+          import("./views/app/gps/confirmations/Confirmations.vue"),
       },
 
       /* ******************* COLLECTIONS ******************* */
@@ -239,7 +245,7 @@ const routes = [
         alias: "/app/gps/collections-dashboard",
         beforeEnter: AuthRequired,
         component: () =>
-          import("./views/app/gps/collections/collectionDashboard.vue")
+          import("./views/app/gps/collections/collectionDashboard.vue"),
       },
       {
         path: "/collection-admin",
@@ -247,7 +253,7 @@ const routes = [
         alias: "/app/gps/collections-admin",
         beforeEnter: AuthRequired,
         component: () =>
-          import("./views/app/gps/collections/collectionAdmin.vue")
+          import("./views/app/gps/collections/collectionAdmin.vue"),
       },
       {
         path: "/collection-file-manager",
@@ -255,7 +261,7 @@ const routes = [
         alias: "/app/gps/collections-file-manager",
         beforeEnter: AuthRequired,
         component: () =>
-          import("./views/app/gps/collections/collectionFileManager.vue")
+          import("./views/app/gps/collections/collectionFileManager.vue"),
       },
       {
         path: "/collection-search",
@@ -264,7 +270,7 @@ const routes = [
         alias: "/app/gps/collections-search",
         beforeEnter: AuthRequired,
         component: () =>
-          import("./views/app/gps/collections/collectionSearch.vue")
+          import("./views/app/gps/collections/collectionSearch.vue"),
       },
       {
         path: "/collection-search-file",
@@ -273,7 +279,7 @@ const routes = [
         alias: "/app/gps/collections-search-file",
         beforeEnter: AuthRequired,
         component: () =>
-          import("./views/app/gps/collections/collectionSearchFile.vue")
+          import("./views/app/gps/collections/collectionSearchFile.vue"),
       },
       /* ******************* FIN COLLECTIONS ******************* */
 
@@ -283,21 +289,21 @@ const routes = [
         name: "client-analysis",
         alias: "/app/gps/client-analysis",
         beforeEnter: AuthRequired,
-        component: () => import("./views/app/gps/reports/ClientAnalysis.vue")
+        component: () => import("./views/app/gps/reports/ClientAnalysis.vue"),
       },
       {
         path: "/sales-progress",
         name: "sales-progress",
         alias: "/app/gps/sales-progress",
         beforeEnter: AuthRequired,
-        component: () => import("./views/app/gps/reports/SalesProgress.vue")
+        component: () => import("./views/app/gps/reports/SalesProgress.vue"),
       },
       {
         path: "/itinerary-results",
         name: "itinerary-results",
         alias: "/app/gps/itinerary-results",
         beforeEnter: AuthRequired,
-        component: () => import("./views/app/gps/reports/ItineraryResults.vue")
+        component: () => import("./views/app/gps/reports/ItineraryResults.vue"),
       },
       {
         path: "/passenger-analysis",
@@ -307,21 +313,21 @@ const routes = [
         component: () =>
           import(
             "./views/app/gps/reports/passenger-analysis/PassengerAnalysis.vue"
-          )
+          ),
       },
       {
         path: "/sales-by-travel",
         name: "sales-by-travel",
         alias: "/app/gps/sales-by-travel",
         beforeEnter: AuthRequired,
-        component: () => import("./views/app/gps/reports/SalesByTravel.vue")
+        component: () => import("./views/app/gps/reports/SalesByTravel.vue"),
       },
       {
         path: "/year-to-date-sales",
         name: "year-to-date-sales",
         alias: "/app/gps/year-to-date-sales",
         beforeEnter: AuthRequired,
-        component: () => import("./views/app/gps/reports/YearToDateSales.vue")
+        component: () => import("./views/app/gps/reports/YearToDateSales.vue"),
       },
       {
         path: "/boat-client-analysis",
@@ -329,21 +335,22 @@ const routes = [
         alias: "/app/gps/boat-client-analysis",
         beforeEnter: AuthRequired,
         component: () =>
-          import("./views/app/gps/reports/BoatClientAnalysis.vue")
+          import("./views/app/gps/reports/BoatClientAnalysis.vue"),
       },
       {
         path: "/financial-analysis",
         name: "financial-analysis",
         alias: "/app/gps/financial-analysis",
         beforeEnter: AuthRequired,
-        component: () => import("./views/app/gps/reports/FinancialAnalysis.vue")
+        component: () =>
+          import("./views/app/gps/reports/FinancialAnalysis.vue"),
       },
       {
         path: "/oniric/financial-analysis-weeks",
         name: "financial-analysis-weeks",
         beforeEnter: AuthRequired,
         component: () =>
-          import("./views/app/gps/reports/FinancialAnalysisWeeks.vue")
+          import("./views/app/gps/reports/FinancialAnalysisWeeks.vue"),
       },
 
       {
@@ -353,14 +360,14 @@ const routes = [
         component: () =>
           import(
             "./views/app/gps/reports/cruise-sales-overview/CruiseSalesOverview.vue"
-          )
+          ),
       },
 
       {
         path: "/product/config",
         name: "config",
         beforeEnter: AuthRequired,
-        component: () => import("./views/app/gps/product/config/Config.vue")
+        component: () => import("./views/app/gps/product/config/Config.vue"),
       },
 
       {
@@ -368,7 +375,7 @@ const routes = [
         name: "cruise-itinerary-sales",
         beforeEnter: AuthRequired,
         component: () =>
-          import("./views/app/gps/reports/CruiseItinerarySales.vue")
+          import("./views/app/gps/reports/CruiseItinerarySales.vue"),
       },
 
       {
@@ -380,22 +387,22 @@ const routes = [
         children: [
           {
             path: "default",
-            component: () => import("./views/app/dashboards/Default")
+            component: () => import("./views/app/dashboards/Default"),
           },
           {
             path: "analytics",
 
-            component: () => import("./views/app/dashboards/Analytics")
+            component: () => import("./views/app/dashboards/Analytics"),
           },
           {
             path: "ecommerce",
-            component: () => import("./views/app/dashboards/Ecommerce")
+            component: () => import("./views/app/dashboards/Ecommerce"),
           },
           {
             path: "content",
-            component: () => import("./views/app/dashboards/Content")
-          }
-        ]
+            component: () => import("./views/app/dashboards/Content"),
+          },
+        ],
       },
       {
         path: "pages",
@@ -410,25 +417,25 @@ const routes = [
             children: [
               {
                 path: "data-list",
-                component: () => import("./views/app/pages/product/DataList")
+                component: () => import("./views/app/pages/product/DataList"),
               },
               {
                 path: "thumb-list",
-                component: () => import("./views/app/pages/product/ThumbList")
+                component: () => import("./views/app/pages/product/ThumbList"),
               },
               {
                 path: "image-list",
-                component: () => import("./views/app/pages/product/ImageList")
+                component: () => import("./views/app/pages/product/ImageList"),
               },
               {
                 path: "details",
-                component: () => import("./views/app/pages/product/Details")
+                component: () => import("./views/app/pages/product/Details"),
               },
               {
                 path: "details-alt",
-                component: () => import("./views/app/pages/product/DetailsAlt")
-              }
-            ]
+                component: () => import("./views/app/pages/product/DetailsAlt"),
+              },
+            ],
           },
           {
             path: "profile",
@@ -437,13 +444,13 @@ const routes = [
             children: [
               {
                 path: "social",
-                component: () => import("./views/app/pages/profile/Social")
+                component: () => import("./views/app/pages/profile/Social"),
               },
               {
                 path: "portfolio",
-                component: () => import("./views/app/pages/profile/Portfolio")
-              }
-            ]
+                component: () => import("./views/app/pages/profile/Portfolio"),
+              },
+            ],
           },
           {
             path: "blog",
@@ -452,13 +459,13 @@ const routes = [
             children: [
               {
                 path: "blog-list",
-                component: () => import("./views/app/pages/blog/BlogList")
+                component: () => import("./views/app/pages/blog/BlogList"),
               },
               {
                 path: "blog-detail",
-                component: () => import("./views/app/pages/blog/BlogDetail")
-              }
-            ]
+                component: () => import("./views/app/pages/blog/BlogDetail"),
+              },
+            ],
           },
           {
             path: "miscellaneous",
@@ -467,36 +474,36 @@ const routes = [
             children: [
               {
                 path: "faq",
-                component: () => import("./views/app/pages/miscellaneous/Faq")
+                component: () => import("./views/app/pages/miscellaneous/Faq"),
               },
               {
                 path: "knowledge-base",
                 component: () =>
-                  import("./views/app/pages/miscellaneous/KnowledgeBase")
+                  import("./views/app/pages/miscellaneous/KnowledgeBase"),
               },
               {
                 path: "search",
                 component: () =>
-                  import("./views/app/pages/miscellaneous/Search")
+                  import("./views/app/pages/miscellaneous/Search"),
               },
               {
                 path: "prices",
                 component: () =>
-                  import("./views/app/pages/miscellaneous/Prices")
+                  import("./views/app/pages/miscellaneous/Prices"),
               },
               {
                 path: "mailing",
                 component: () =>
-                  import("./views/app/pages/miscellaneous/Mailing")
+                  import("./views/app/pages/miscellaneous/Mailing"),
               },
               {
                 path: "invoice",
                 component: () =>
-                  import("./views/app/pages/miscellaneous/Invoice")
-              }
-            ]
-          }
-        ]
+                  import("./views/app/pages/miscellaneous/Invoice"),
+              },
+            ],
+          },
+        ],
       },
       {
         path: "applications",
@@ -506,22 +513,22 @@ const routes = [
         children: [
           {
             path: "todo",
-            component: () => import("./views/app/applications/Todo")
+            component: () => import("./views/app/applications/Todo"),
           },
           {
             path: "survey",
-            component: () => import("./views/app/applications/Survey")
+            component: () => import("./views/app/applications/Survey"),
           },
           {
             path: "survey/:id",
             component: () => import("./views/app/applications/SurveyDetail"),
-            props: true
+            props: true,
           },
           {
             path: "chat",
-            component: () => import("./views/app/applications/Chat")
-          }
-        ]
+            component: () => import("./views/app/applications/Chat"),
+          },
+        ],
       },
       {
         path: "ui",
@@ -536,21 +543,21 @@ const routes = [
             children: [
               {
                 path: "layouts",
-                component: () => import("./views/app/ui/forms/Layouts")
+                component: () => import("./views/app/ui/forms/Layouts"),
               },
               {
                 path: "components",
-                component: () => import("./views/app/ui/forms/Components")
+                component: () => import("./views/app/ui/forms/Components"),
               },
               {
                 path: "validations",
-                component: () => import("./views/app/ui/forms/Validations")
+                component: () => import("./views/app/ui/forms/Validations"),
               },
               {
                 path: "wizard",
-                component: () => import("./views/app/ui/forms/Wizard")
-              }
-            ]
+                component: () => import("./views/app/ui/forms/Wizard"),
+              },
+            ],
           },
           {
             path: "datatables",
@@ -560,17 +567,17 @@ const routes = [
               {
                 path: "divided-table",
                 component: () =>
-                  import("./views/app/ui/datatables/DividedTable")
+                  import("./views/app/ui/datatables/DividedTable"),
               },
               {
                 path: "scrollable",
-                component: () => import("./views/app/ui/datatables/Scrollable")
+                component: () => import("./views/app/ui/datatables/Scrollable"),
               },
               {
                 path: "default",
-                component: () => import("./views/app/ui/datatables/Default")
-              }
-            ]
+                component: () => import("./views/app/ui/datatables/Default"),
+              },
+            ],
           },
           {
             path: "components",
@@ -579,80 +586,81 @@ const routes = [
             children: [
               {
                 path: "alerts",
-                component: () => import("./views/app/ui/components/Alerts")
+                component: () => import("./views/app/ui/components/Alerts"),
               },
               {
                 path: "badges",
-                component: () => import("./views/app/ui/components/Badges")
+                component: () => import("./views/app/ui/components/Badges"),
               },
               {
                 path: "buttons",
-                component: () => import("./views/app/ui/components/Buttons")
+                component: () => import("./views/app/ui/components/Buttons"),
               },
               {
                 path: "cards",
-                component: () => import("./views/app/ui/components/Cards")
+                component: () => import("./views/app/ui/components/Cards"),
               },
               {
                 path: "carousel",
-                component: () => import("./views/app/ui/components/Carousel")
+                component: () => import("./views/app/ui/components/Carousel"),
               },
               {
                 path: "charts",
-                component: () => import("./views/app/ui/components/Charts")
+                component: () => import("./views/app/ui/components/Charts"),
               },
               {
                 path: "collapse",
-                component: () => import("./views/app/ui/components/Collapse")
+                component: () => import("./views/app/ui/components/Collapse"),
               },
               {
                 path: "dropdowns",
-                component: () => import("./views/app/ui/components/Dropdowns")
+                component: () => import("./views/app/ui/components/Dropdowns"),
               },
               {
                 path: "editors",
-                component: () => import("./views/app/ui/components/Editors")
+                component: () => import("./views/app/ui/components/Editors"),
               },
               {
                 path: "icons",
-                component: () => import("./views/app/ui/components/Icons")
+                component: () => import("./views/app/ui/components/Icons"),
               },
               {
                 path: "input-groups",
-                component: () => import("./views/app/ui/components/InputGroups")
+                component: () =>
+                  import("./views/app/ui/components/InputGroups"),
               },
               {
                 path: "jumbotron",
-                component: () => import("./views/app/ui/components/Jumbotron")
+                component: () => import("./views/app/ui/components/Jumbotron"),
               },
               {
                 path: "maps",
-                component: () => import("./views/app/ui/components/Maps")
+                component: () => import("./views/app/ui/components/Maps"),
               },
               {
                 path: "modal",
-                component: () => import("./views/app/ui/components/Modal")
+                component: () => import("./views/app/ui/components/Modal"),
               },
               {
                 path: "navigation",
-                component: () => import("./views/app/ui/components/Navigation")
+                component: () => import("./views/app/ui/components/Navigation"),
               },
               {
                 path: "popover-tooltip",
                 component: () =>
-                  import("./views/app/ui/components/PopoverTooltip")
+                  import("./views/app/ui/components/PopoverTooltip"),
               },
               {
                 path: "sortable",
-                component: () => import("./views/app/ui/components/Sortable")
+                component: () => import("./views/app/ui/components/Sortable"),
               },
               {
                 path: "tables",
-                component: () => import("./views/app/ui/components/Tables")
-              }
-            ]
-          }
-        ]
+                component: () => import("./views/app/ui/components/Tables"),
+              },
+            ],
+          },
+        ],
       },
       {
         path: "menu",
@@ -662,7 +670,7 @@ const routes = [
         children: [
           {
             path: "types",
-            component: () => import("./views/app/menu/Types")
+            component: () => import("./views/app/menu/Types"),
           },
           {
             path: "levels",
@@ -671,36 +679,39 @@ const routes = [
             children: [
               {
                 path: "third-level-1",
-                component: () => import("./views/app/menu/levels/Third-level-1")
+                component: () =>
+                  import("./views/app/menu/levels/Third-level-1"),
               },
               {
                 path: "third-level-2",
-                component: () => import("./views/app/menu/levels/Third-level-2")
+                component: () =>
+                  import("./views/app/menu/levels/Third-level-2"),
               },
               {
                 path: "third-level-3",
-                component: () => import("./views/app/menu/levels/Third-level-3")
-              }
-            ]
-          }
-        ]
+                component: () =>
+                  import("./views/app/menu/levels/Third-level-3"),
+              },
+            ],
+          },
+        ],
       },
       {
         path: "blank-page",
-        component: () => import("./views/app/blank-page")
-      }
-    ]
+        component: () => import("./views/app/blank-page"),
+      },
+    ],
   },
 
   {
     path: "/error",
     name: "error",
-    component: () => import("./views/Error")
+    component: () => import("./views/Error"),
   },
   {
     path: "/unauthorized",
     name: "unathorized",
-    component: () => import("./views/Unauthorized")
+    component: () => import("./views/Unauthorized"),
   },
   {
     path: "/user",
@@ -711,21 +722,21 @@ const routes = [
       {
         path: "login",
         meta: { requiresVisitor: true },
-        component: () => import("./views/user/Login")
-      }
-    ]
+        component: () => import("./views/user/Login"),
+      },
+    ],
   },
   {
     path: "*",
-    component: () => import("./views/Error")
-  }
+    component: () => import("./views/Error"),
+  },
 ];
 
 const router = new VueRouter({
   linkActiveClass: "active",
   routes,
   history: true,
-  mode: "history"
+  mode: "history",
 });
 
 router.beforeEach(AuthGuard);

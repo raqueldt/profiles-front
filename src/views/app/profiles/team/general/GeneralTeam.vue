@@ -16,7 +16,10 @@
 					<ButtonBasic variant="primary" text="New User" @click="handleClick" />
 				</div>
 			</b-card-header>
-			<TableBasic :items="datos" :fields="datos" :perPage="5" :options="opciones" />
+			<TableBasic :items="datos"  :perPage="5" :options="opciones" :editButton="true" />
+			<!-- <TableBasicEdit :items="datosEstaticos" :fields="campos" :perPage="5" :options="opciones"
+				@editar-click="handleEditarClick" /> -->
+
 		</b-card>
 	</div>
 </template>
@@ -25,6 +28,7 @@
 import internoServices from "../../../../../services/profiles/interno/internoServices";
 import { mapGetters } from "vuex";
 import TableBasic from '../../../../../components/UI/Tables/TableBasic.vue';
+import TableBasicEdit from '../../../../../components/UI/Tables/TableBasicEdit.vue';
 import ButtonBasic from '../../../../../components/UI/Button/ButtonBasic.vue';
 import ModalBasic from '../../../../../components/UI/Modal/ModalBasic.vue';
 import User from '../user/createuser.vue';
@@ -32,6 +36,7 @@ import User from '../user/createuser.vue';
 export default {
 	components: {
 		TableBasic,
+		TableBasicEdit,
 		ButtonBasic,
 		ModalBasic,
 		User
@@ -45,7 +50,14 @@ export default {
 				title: 'Título del Modal',
 				text: 'Contenido del Modal'
 			},
+
 			modalSize: 'xl',
+			opcionesEdit: {},
+			datosEstaticos: [
+				{ id: 1, nombre: 'Ejemplo 1', edad: 30 },
+				{ id: 2, nombre: 'Ejemplo 2', edad: 25 },
+			],
+			campos: ['id', 'nombre', 'edad'], // Definición de los campos
 			opciones: {
 				highlightMatches: true,
 				sortable: true,

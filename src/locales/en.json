@@ -2,14 +2,17 @@
 	"profiles": {
 		"dashboard": "Home",
 		"team": "Team",
-		"perfil": "Perfil"
+		"perfil": "Perfil",
+		"noticias": "Noticias"
 	},
 	"titles": {
 		"home": "Home",
 		"dashboard": "Página principal",
 		"team": "Equipo",
+		"tthh": "TTHH",
 		"perfil": "Mi perfil",
-		"company": "Company"
+		"company": "Company",
+		"noticias": "Actualización de noticias"
 	},
 	"general": {
 		"copyright": "Piaf Vue © 2018 All Rights Reserved."
