@@ -4,7 +4,9 @@
 
 		<b-container fluid>
 			<b-row>
-				Administrador del Muro
+				Administrador documentos <br>
+
+				VISTA: Documentos cargados (#) por colaborador
 			</b-row>
 
 		</b-container>

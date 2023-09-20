@@ -3,7 +3,9 @@
 		"dashboard": "Home",
 		"team": "Team",
 		"perfil": "Perfil",
-		"noticias": "Noticias"
+		"noticias": "Noticias",
+		"rolpagos": "Rol de pagos",
+		"documentos": "Documentos"
 	},
 	"titles": {
 		"home": "Home",
@@ -12,7 +14,9 @@
 		"tthh": "TTHH",
 		"perfil": "Mi perfil",
 		"company": "Company",
-		"noticias": "Actualización de noticias"
+		"noticias": "Actualización de noticias",
+		"rolpagos": "Actualización de rol de pagos",
+		"documentos": "Documentos"
 	},
 	"general": {
 		"copyright": "Piaf Vue © 2018 All Rights Reserved."

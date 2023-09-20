@@ -60,6 +60,18 @@ const routes = [
         beforeEnter: AuthRequired,
         component: () => import("@/views/app/profiles/noticias/MainNoticias"),
       },
+      {
+        path: "/tthh/rolpagos",
+        name: "rolpagos",
+        beforeEnter: AuthRequired,
+        component: () => import("@/views/app/profiles/rolpagos/Main"),
+      },
+      {
+        path: "/tthh/documentos",
+        name: "documentos",
+        beforeEnter: AuthRequired,
+        component: () => import("@/views/app/profiles/documentos/Main"),
+      },
 
       /* ******************* GPS ******************* */
 

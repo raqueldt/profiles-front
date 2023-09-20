@@ -4,7 +4,9 @@
 
 		<b-container fluid>
 			<b-row>
-				Administrador del Muro
+				Administrador del rol de pagos <br>
+
+				VISTA: Carga masiva de registros de rol de pagos
 			</b-row>
 
 		</b-container>

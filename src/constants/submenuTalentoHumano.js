@@ -18,7 +18,7 @@ const data = [
       {
         id: "cruise-sales-overview",
         label: "Rol de pagos",
-        to: `/oniric/cruise-sales-overview`
+        to: `/tthh/rolpagos`
       },
     ]
   },
@@ -31,7 +31,7 @@ const data = [
       {
         id: "client-analysis",
         label: "Documentos",
-        to: `/client-analysis`
+        to: `/tthh/documentos`
       },
       {
         id: "sales-progress",
