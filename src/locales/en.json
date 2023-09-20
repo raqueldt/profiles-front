@@ -22,6 +22,7 @@
 			"reportHomeOffice": "Reporte Home Office",
 			"reportReconocimientos": "Reporte Reconocimientos"
 		},
+		"busqueda": "Resultados búsqueda",
 		"ejemplo": "Ejemplo"
 	},
 	"titles": {
@@ -45,6 +46,8 @@
 		"vacaciones": "Vacaciones",
 		"homeoffice": "Home Office",
 		"reconocimientos": "Reconocimientos",
+		"busqueda": "Búsqueda",
+		"collectionSearch": "Results",
 		"ejemplo": "EJEMPLO"
 	},
 	"general": {

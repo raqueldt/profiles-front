@@ -111,38 +111,64 @@ const routes = [
         path: "/report/interno",
         name: "interno",
         beforeEnter: AuthRequired,
-        component: () => import("@/views/app/profiles/reportes/usuarios/reportInterno/Main"),
+        component: () =>
+          import("@/views/app/profiles/reportes/usuarios/reportInterno/Main"),
       },
       {
         path: "/report/company",
         name: "Company",
         beforeEnter: AuthRequired,
-        component: () => import("@/views/app/profiles/reportes/usuarios/reportCompany/Main"),
+        component: () =>
+          import("@/views/app/profiles/reportes/usuarios/reportCompany/Main"),
       },
       {
         path: "/report/Permisos",
         name: "Permisos",
         beforeEnter: AuthRequired,
-        component: () => import("@/views/app/profiles/reportes/procesos/reportPermisos/Main"),
+        component: () =>
+          import("@/views/app/profiles/reportes/procesos/reportPermisos/Main"),
       },
       {
         path: "/report/Vacaciones",
         name: "Vacaciones",
         beforeEnter: AuthRequired,
-        component: () => import("@/views/app/profiles/reportes/procesos/reportVacaciones/Main"),
+        component: () =>
+          import(
+            "@/views/app/profiles/reportes/procesos/reportVacaciones/Main"
+          ),
       },
       {
         path: "/report/homeoffice",
         name: "HomeOffice",
         beforeEnter: AuthRequired,
-        component: () => import("@/views/app/profiles/reportes/procesos/reportHomeOffice/Main"),
+        component: () =>
+          import(
+            "@/views/app/profiles/reportes/procesos/reportHomeOffice/Main"
+          ),
       },
       {
         path: "/report/Reconocimientos",
         name: "Reconocimientos",
         beforeEnter: AuthRequired,
-        component: () => import("@/views/app/profiles/reportes/procesos/reportReconocimientos/Main"),
+        component: () =>
+          import(
+            "@/views/app/profiles/reportes/procesos/reportReconocimientos/Main"
+          ),
       },
+
+      //search
+      {
+        path: "/busqueda/collectionSearch",
+        props: true,
+        name: "collection-search",
+        alias: "/app/gps/collections-search",
+        beforeEnter: AuthRequired,
+        component: () =>
+         import(
+            "@/views/app/profiles/busqueda/Main"
+          ),
+      },
+
       /* ******************* GPS ******************* */
 
       {

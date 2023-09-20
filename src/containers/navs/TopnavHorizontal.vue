@@ -402,7 +402,7 @@ export default {
 		handleSearch() {
 
 			this.$router.push({
-				path: '/collection-search',
+				path: '/busqueda/collectionSearch',
 				query: { q: this.search }
 			}).catch(() => { });
 
