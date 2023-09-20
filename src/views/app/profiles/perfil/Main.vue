@@ -15,10 +15,10 @@
 </template>
 
 <script>
-import general from "./general/GeneralPerfil.vue"
+import general from "./general/General.vue"
 
 export default {
-	name: 'MainPerfil',
+	name: 'Main',
 	components: {
 		general
 	}

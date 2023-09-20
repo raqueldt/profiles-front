@@ -28,7 +28,7 @@ const routes = [
         props: true,
         name: "main-dashboard",
         beforeEnter: AuthRequired,
-        component: () => import("./views/app/profiles/dashboard/MainDashboard"),
+        component: () => import("./views/app/profiles/dashboard/Main"),
       },
 
       {
@@ -50,7 +50,7 @@ const routes = [
         beforeEnter: AuthRequired,
         props: true,
         name: "Perfil",
-        component: () => import("@/views/app/profiles/perfil/MainPerfil"),
+        component: () => import("@/views/app/profiles/perfil/Main"),
       },
 
       //SUBMENU TALAENTO HUMANO

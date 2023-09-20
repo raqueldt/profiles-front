@@ -8,18 +8,19 @@
 			</b-colxx>
 		</b-row>
 
-
-		MAIN DASHBOARD
-
+		<general></general>
 
 	</div>
 </template>
 
 <script>
-
+import general from "./general/General.vue"
 
 export default {
-	name: 'MainDashboard',
+	name: 'Main',
+	components: {
+		general
+	}
 
 }
 
