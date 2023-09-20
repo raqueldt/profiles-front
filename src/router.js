@@ -96,12 +96,52 @@ const routes = [
         beforeEnter: AuthRequired,
         component: () => import("@/views/app/profiles/departamentos/Main"),
       },
+
+      //GENERAL
       {
         path: "instructivo",
         props: true,
         name: "instructivo",
         beforeEnter: AuthRequired,
         component: () => import("@/views/app/profiles/instructivo/Main"),
+      },
+      //REPORTS
+
+      {
+        path: "/report/interno",
+        name: "interno",
+        beforeEnter: AuthRequired,
+        component: () => import("@/views/app/profiles/reportes/usuarios/reportInterno/Main"),
+      },
+      {
+        path: "/report/company",
+        name: "Company",
+        beforeEnter: AuthRequired,
+        component: () => import("@/views/app/profiles/reportes/usuarios/reportCompany/Main"),
+      },
+      {
+        path: "/report/Permisos",
+        name: "Permisos",
+        beforeEnter: AuthRequired,
+        component: () => import("@/views/app/profiles/reportes/procesos/reportPermisos/Main"),
+      },
+      {
+        path: "/report/Vacaciones",
+        name: "Vacaciones",
+        beforeEnter: AuthRequired,
+        component: () => import("@/views/app/profiles/reportes/procesos/reportVacaciones/Main"),
+      },
+      {
+        path: "/report/homeoffice",
+        name: "HomeOffice",
+        beforeEnter: AuthRequired,
+        component: () => import("@/views/app/profiles/reportes/procesos/reportHomeOffice/Main"),
+      },
+      {
+        path: "/report/Reconocimientos",
+        name: "Reconocimientos",
+        beforeEnter: AuthRequired,
+        component: () => import("@/views/app/profiles/reportes/procesos/reportReconocimientos/Main"),
       },
       /* ******************* GPS ******************* */
 

@@ -3,7 +3,7 @@
 
 		<b-row>
 			<b-colxx xxs="12">
-				<piaf-breadcrumb :heading="$t('profiles.tthh.rolpagos')" />
+				<piaf-breadcrumb :heading="$t('profiles.report.reportPermisos')" />
 				<div class="separator mb-2"></div>
 			</b-colxx>
 		</b-row>

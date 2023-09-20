@@ -11,17 +11,16 @@ const data = [
     to: `${adminRoot}/reports`,
     subs: [
       {
-        id: "oniric-financial-analysis-weeks",
+        id: "report-interno",
         label: "Interno",
-        to: `/oniric/financial-analysis-weeks`
+        to: `/report/interno`,
       },
       {
-        id: "cruise-sales-overview",
+        id: "report-company",
         label: "Empresas",
-        to: `/oniric/cruise-sales-overview`
+        to: `/report/company`,
       },
-
-    ]
+    ],
   },
   {
     id: "in-progress-reports",
@@ -32,29 +31,26 @@ const data = [
       {
         id: "client-analysis",
         label: "Permisos",
-        to: `/client-analysis`
+        to: `/report/permisos`,
       },
       {
         id: "sales-progress",
         label: "Vacaciones",
-        to: `/sales-progress`
+        to: `/report/vacaciones`,
       },
 
       {
         id: "sales-by-travel",
         label: "Home Office",
-        to: `/sales-by-travel`
+        to: `/report/homeoffice`,
       },
 
       {
         id: "year-to-date-sales",
         label: "Reconocimientos",
-        to: `/year-to-date-sales`
+        to: `/report/reconocimientos`,
       },
-
-    ]
-  }
-
-
+    ],
+  },
 ];
 export default data;

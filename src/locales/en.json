@@ -3,23 +3,34 @@
 		"dashboard": "Home",
 		"team": "Team",
 		"perfil": "Perfil",
-		"noticias": "Noticias",
-		"rolpagos": "Rol de pagos",
+		"tthh": {
+			"noticias": "Noticias",
+			"rolpagos": "Rol de pagos"
+		},
+		"company": "Company",
 		"documentos": "Documentos",
 		"cargasfamiliares": "Cargas familiares",
 		"feriados": "Feriados",
 		"formulario107": "Formulario 107",
 		"departamentos": "Departamentos",
 		"instructivo": "Procesos e instructivos",
-		"ultimo": "Cargas familiares"
+		"report": {
+			"reportInterno": "Reporte Usuarios",
+			"reportCompany": "Reporte Company",
+			"reportPermisos": "Reporte Permisos",
+			"reportVacaciones": "Reporte Vacaciones",
+			"reportHomeOffice": "Reporte Home Office",
+			"reportReconocimientos": "Reporte Reconocimientos"
+		},
+		"ejemplo": "Ejemplo"
 	},
 	"titles": {
-		"home": "Home",
+		"home": "General",
 		"dashboard": "Página principal",
-		"team": "Equipo",
-		"tthh": "TTHH",
+		"team": "Lista de usuarios",
 		"perfil": "Mi perfil",
-		"company": "Company",
+		"tthh": "TTHH",
+		"company": "Lista de compañias",
 		"noticias": "Actualización de noticias",
 		"rolpagos": "Actualización de rol de pagos",
 		"documentos": "Documentos",
@@ -28,7 +39,13 @@
 		"formulario107": "Administración de Formulario 107",
 		"departamentos": "Administración de Departamentos",
 		"instructivo": "Procesos e instructivos",
-		"ultimo": "Cargas familiares"
+		"report": "Reports",
+		"interno": "Usuarios",
+		"permisos": "Permisos",
+		"vacaciones": "Vacaciones",
+		"homeoffice": "Home Office",
+		"reconocimientos": "Reconocimientos",
+		"ejemplo": "EJEMPLO"
 	},
 	"general": {
 		"copyright": "Piaf Vue © 2018 All Rights Reserved."
@@ -52,7 +69,6 @@
 		"buy": "BUY",
 		"username": "Username"
 	},
-
 	"menu": {
 		"ratesmanager": "Rates Manager",
 		"reports": "Reports",
