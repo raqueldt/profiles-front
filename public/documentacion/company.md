@@ -23,7 +23,7 @@ El objetivo de esta vista es proporcionar a los usuarios la capacidad de ver y a
 ## Mejoras Futuras
 
 - Agregar una función de búsqueda para facilitar la localización de perfiles.
-- Implementar una funcionalidad de edición.
+- Implementar una funcionalidad de edición (Modal).
 - Implementar una vista de empresas.
 
 ## Autores
