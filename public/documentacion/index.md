@@ -155,7 +155,7 @@ function autenticarUsuario(usuario, contraseña) {
 
 ```plaintext
 /**
- * docPerfil.md
+ * perfil.md
  *
 # Vista de Perfiles de Usuario
 
