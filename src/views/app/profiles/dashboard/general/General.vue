@@ -1,17 +1,17 @@
 <template>
 	<div>
-		{{ loggedUser }}
-
+		<!-- {{ loggedUser }} -->
+<!--
 		<b-container fluid>
 			<b-row>
-				NOTICIAS MURO<br>
-
-				VISTA:noticias <br>
-				VISTA:calendario / EN VACACIONES
+				<b-col lg="2">11</b-col>
+				<b-col lg="6">
+				</b-col>
 			</b-row>
 
-		</b-container>
+		</b-container> -->
 
+					<muroAll></muroAll>
 
 		<!-- <pre> {{ userData }} </pre> -->
 
@@ -21,10 +21,12 @@
 
 <script>
 import { mapGetters } from "vuex";
-
+import muroAll from '../muro/muro.vue';
+// import muroItem from '../muro/muroItem.vue';
 export default {
 	components: {
-
+		// muroItem,
+		muroAll
 	},
 	name: "General",
 	data() {

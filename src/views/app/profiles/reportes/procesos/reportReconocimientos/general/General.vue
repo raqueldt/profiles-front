@@ -4,9 +4,9 @@
 
 		<b-container fluid>
 			<b-row>
-				Administrador documentos <br>
+				REPORTE <br>
 
-				VISTA: Documentos cargas familiares (#) por colaborador
+				VISTA: REPORTE RECONOCIMIENTOS
 			</b-row>
 
 		</b-container>

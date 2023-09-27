@@ -37,7 +37,7 @@ Este proyecto se enfoca en la creación de la interfaz de usuario del sistema Pr
 **Autenticación y Autorización**:
 
     - Registro de usuarios internos.
-    - Inicio de sesión con autenticación segura.
+    - Inicio de sesión con autenticación segura. (GPS-VOYAGER)
     - Gestión de roles y permisos para diferentes tipos de usuarios (por ejemplo, administradores, empleados, TTHH, etc.).
 
 **Gestión de Perfil**:
