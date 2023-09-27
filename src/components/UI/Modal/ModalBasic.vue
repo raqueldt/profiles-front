@@ -1,5 +1,5 @@
 <template>
-  <b-modal v-model="showModal" :size="modalSize" title="Crear nuevo Usuario" @hidden="closeModal" hide-footer hide-header>
+  <b-modal v-model="showModal" :size="modalSize" @hidden="closeModal" hide-footer hide-header>
     <template #modal-header="">
       <small>{{ title }}</small>
     </template>

@@ -98,7 +98,7 @@ export default {
 		getRoles() {
 			RolesServices.getRoles()
 				.then((response) => {
-					this.roles = response.data.data.map((rol) => ({
+						this.roles = response.data.data.filter(rol => rol.tag === 'ATC').map((rol) => ({
 						value: rol.id,
 						text: rol.title,
 					}));

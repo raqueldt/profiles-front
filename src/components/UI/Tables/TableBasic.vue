@@ -1,19 +1,12 @@
 <template>
 	<div>
-		<b-table :items="displayedItems" :per-page="perPage" :options="options" responsive bordered hover>
-			<!-- Otras columnas... -->
-			<b-table-column label="Columna Estática">
-				<template v-slot="data">
-					Contenido Estático
-				</template>
-			</b-table-column>
-			<!-- Columna de botón de editar -->
-			<template v-if="editButton">
-				<b-table-column label="Editar">
-					<template v-slot="data">
-						<b-button @click="handleEditClick(data.item)">Editar</b-button>
-					</template>
-				</b-table-column>
+		<!-- {{ items }} -->
+		<b-table :items="displayedItems" :fields="fields" :per-page="perPage" :options="options" responsive bordered hover>
+
+			<template v-slot:cell(edit)="data">
+				<div class="row justify-content-center">
+					<b-button @click="handleEditClick(data.item)" class="btn-sm"> <i class="iconsminds-pen"></i></b-button>
+				</div>
 			</template>
 		</b-table>
 		<b-pagination v-model="currentPage" :total-rows="items.length" :per-page="perPage" align="center"
@@ -64,18 +57,15 @@ export default {
 			this.displayedItems = this.items.slice(this.startIndex, this.endIndex);
 		},
 		handleEditClick(item) {
-			// Lógica para manejar el clic en el botón de editar
-			// Puedes emitir un evento para notificar a GeneralTeam que se hizo clic en editar
+			// alert("dsnglkds", item);
 			this.$emit('editar-click', item);
 		}
 	},
 	mounted() {
 		// Al montar el componente, inicialmente muestra los datos de la primera página
 		this.updateDisplayedItems(this.currentPage);
-		// this.onPageChange(this.currentPage);
 	},
-
-}
+};
 </script>
 
 <style scoped>

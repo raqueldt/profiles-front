@@ -1,12 +1,10 @@
 <template>
 	<div>
-		<ModalBasic :show-modal="modalVisible" :modal-size="modalSize" @close="closeModal">
+		<ModalBasic :show-modal="modalVisible" :modal-size="modalSize" @close="closeModal" title="crear">
 			<template v-if="modalContent.component">
 				<component :is="modalContent.component" @usuario-creado="closeModal"></component>
 			</template>
 		</ModalBasic>
-		<!-- <User></User> -->
-
 
 		<b-card>
 			<b-card-header>
@@ -16,7 +14,8 @@
 					<ButtonBasic variant="primary" text="New User" @click="handleClick" />
 				</div>
 			</b-card-header>
-			<TableBasic :items="datos"  :perPage="5" :options="opciones" :editButton="true" />
+			<TableBasic :items="datos" :fields=fields :perPage="5" :options="opciones" :editButton="true"
+				@editar-click="handleEditarClick" />
 			<!-- <TableBasicEdit :items="datosEstaticos" :fields="campos" :perPage="5" :options="opciones"
 				@editar-click="handleEditarClick" /> -->
 
@@ -58,6 +57,14 @@ export default {
 				{ id: 2, nombre: 'Ejemplo 2', edad: 25 },
 			],
 			campos: ['id', 'nombre', 'edad'], // Definición de los campos
+			fields: [
+				// Definir las columnas de la tabla
+				{ key: 'nombre_completo', label: 'Nombre' },
+				{ key: 'email', label: 'Correo' },
+				{ key: 'departamento', label: 'Departamento' },
+				{ key: 'extension', label: 'Extension' },
+				{ key: 'edit', label: '' },
+			],
 			opciones: {
 				highlightMatches: true,
 				sortable: true,
@@ -139,6 +146,7 @@ export default {
 				const response = await internoServices.getAllUsersActive(),
 					filteredData = response.data.data.map(item => {
 						return {
+							users_id: item.users_id,
 							nombre_completo: item.nombre_completo,
 							email: item.email,
 							departamento: item.departamento,
@@ -161,6 +169,10 @@ export default {
 
 		closeModal() {
 			this.modalVisible = false;
+		},
+		handleEditarClick(item) {
+			this.handleClick();
+			console.log('Se hizo clic en Editar en el elemento:', item);
 		},
 
 
