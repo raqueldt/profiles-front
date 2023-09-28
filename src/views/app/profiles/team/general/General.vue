@@ -18,7 +18,7 @@
 			<b-tabs v-model="selectedTab">
 				<b-tab v-for="(tab, index) in tabs" :key="index" :title="tab.title" @click="filterUsers(tab.statusCode)">
 					<TableBasic :items="filteredUsers" :fields="fields" :perPage="5" :options="opciones" :editButton="true"
-						@editar-click="handleEditarClick" @eliminar-click="handleEliminarClick"
+						@editar-click="handleEditarClick" @inactivar-click="handleInactivarClick" @activar-click="handleActivarClick"
 						:selectedTab="selectedTab" />
 				</b-tab>
 			</b-tabs>
@@ -208,21 +208,44 @@ export default {
 			this.handleClick();
 			console.log('Se hizo clic en Editar en el elemento:', item);
 		},
-		handleEliminarClick(item) {
+		handleInactivarClick(item) {
 
 			console.log("quitar usuario", item)
 			this.$swal({
-				title: "¡Atención!",
-				text: '¿Esta seguro de inactivar a ' + item.nombre_completo + ' ?',
+				title: "Inactivar Usuario!",
+				text: '¡Confirma si deseas inactivar a ' + item.nombre_completo + '!',
 				icon: 'warning',
-				showCancelButton: true,
+				showCancelButton: false,
 				confirmButtonColor: '#3085d6',
-
-				confirmButtonText: 'Si, eliminar'
+				confirmButtonText: 'Si, confirmar'
 			}).then((result) => {
 				if (result.isConfirmed) {
 					this.$swal({
 						title: 'Inactivado!',
+
+						icon: 'success',
+						timer: 2000,
+						showConfirmButton: false,
+					});
+				}
+			})
+			console.log('Se hizo clic en Editar en el elemento:', item);
+		},
+		handleActivarClick(item) {
+
+			console.log("quitar usuario", item)
+			this.$swal({
+				title: "¡Atención!",
+				text: '¿Esta seguro de ACTIVAR a ' + item.nombre_completo + ' ?',
+				icon: 'warning',
+				showCancelButton: true,
+				confirmButtonColor: '#3085d6',
+
+				confirmButtonText: 'Si, activar!'
+			}).then((result) => {
+				if (result.isConfirmed) {
+					this.$swal({
+						title: 'Activado!',
 
 						icon: 'success',
 						timer: 2000,

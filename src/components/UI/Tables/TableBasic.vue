@@ -8,12 +8,12 @@
 			<template v-slot:cell(edit)="data">
 				<div class="row justify-content-center" v-if="selectedTab==0">
 					<b-button @click="handleEditClick(data.item)" class="btn-sm"> <i class="iconsminds-pen"></i></b-button>
-					<b-button @click="handleDeleteClick(data.item)" class="btn-sm ml-1"> <i
-							class="iconsminds-remove"></i></b-button>
+					<b-button @click="handleInactivarClick(data.item)" class="btn-sm ml-1"> <i
+							class="fa fa-power-off text-danger"></i></b-button>
 				</div>
 				<div class="row justify-content-center" v-if="selectedTab==1">
-					<b-button @click="handleDeleteClick(data.item)" class="btn-sm ml-1"> <i
-							class="iconsminds-check"></i></b-button>
+					<b-button @click="handleActivarClick(data.item)" class="btn-sm ml-1"> <i
+							class="fa fa-power-off text-success"></i></b-button>
 				</div>
 			<!-- </template>
 			<template v-slot:cell(delete)="data"> -->
@@ -73,9 +73,13 @@ export default {
 			// alert("dsnglkds", item);
 			this.$emit('editar-click', item);
 		},
-		handleDeleteClick(item) {
+		handleInactivarClick(item) {
 			// alert("dsnglkds", item);
-			this.$emit('eliminar-click', item);
+			this.$emit('inactivar-click', item);
+		},
+		handleActivarClick(item) {
+			// alert("dsnglkds", item);
+			this.$emit('activar-click', item);
 		}
 	},
 	mounted() {
