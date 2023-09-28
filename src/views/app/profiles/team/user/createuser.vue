@@ -1,5 +1,6 @@
 <template>
 	<div>
+		{{ actionModal }}
 		<b-progress :value="progress" animated></b-progress>
 		<b-row class="justify-content-center">
 			<b-col v-for="(step, index) in stepTitles" :key="index" class="text-center">
@@ -30,6 +31,9 @@ import Step5 from './createuserStep5.vue';
 import Step6 from './createuserStep6.vue';
 
 export default {
+	props: {
+		actionModal: String
+	},
 	components: {
 		Step1,
 		Step2,

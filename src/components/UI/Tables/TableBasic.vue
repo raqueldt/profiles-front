@@ -1,11 +1,23 @@
 <template>
 	<div>
+		{{ selectedTab }}
 		<!-- {{ items }} -->
-		<b-table :items="displayedItems" :fields="fields" :per-page="perPage" :options="options" responsive bordered hover>
+		<b-table :items="displayedItems" :fields="fields" :per-page="perPage" :options="options" responsive bordered hover
+			style="overflow-x: hidden;">
 
 			<template v-slot:cell(edit)="data">
-				<div class="row justify-content-center">
+				<div class="row justify-content-center" v-if="selectedTab==0">
 					<b-button @click="handleEditClick(data.item)" class="btn-sm"> <i class="iconsminds-pen"></i></b-button>
+					<b-button @click="handleDeleteClick(data.item)" class="btn-sm ml-1"> <i
+							class="iconsminds-remove"></i></b-button>
+				</div>
+				<div class="row justify-content-center" v-if="selectedTab==1">
+					<b-button @click="handleDeleteClick(data.item)" class="btn-sm ml-1"> <i
+							class="iconsminds-check"></i></b-button>
+				</div>
+			<!-- </template>
+			<template v-slot:cell(delete)="data"> -->
+				<div class="row justify-content-center mt-1">
 				</div>
 			</template>
 		</b-table>
@@ -22,7 +34,8 @@ export default {
 		fields: Array, // Los campos de la tabla
 		perPage: Number, // Número de elementos por página
 		options: Object, // Las opciones personalizadas
-		editButton: Boolean
+		editButton: Boolean,
+		selectedTab: String
 	},
 	data() {
 		return {
@@ -59,6 +72,10 @@ export default {
 		handleEditClick(item) {
 			// alert("dsnglkds", item);
 			this.$emit('editar-click', item);
+		},
+		handleDeleteClick(item) {
+			// alert("dsnglkds", item);
+			this.$emit('eliminar-click', item);
 		}
 	},
 	mounted() {
