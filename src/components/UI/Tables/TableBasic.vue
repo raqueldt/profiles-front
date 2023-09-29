@@ -1,21 +1,22 @@
 <template>
 	<div>
-		{{ selectedTab }}
+		<!-- {{ selectedTab }} -->
 		<!-- {{ items }} -->
 		<b-table :items="displayedItems" :fields="fields" :per-page="perPage" :options="options" responsive bordered hover
 			style="overflow-x: hidden;">
 
+
 			<template v-slot:cell(edit)="data">
-				<div class="row justify-content-center" v-if="selectedTab==0">
+				<div class="row justify-content-center" v-if="selectedTab == 0">
 					<b-button @click="handleEditClick(data.item)" class="btn-sm"> <i class="iconsminds-pen"></i></b-button>
 					<b-button @click="handleInactivarClick(data.item)" class="btn-sm ml-1"> <i
 							class="fa fa-power-off text-danger"></i></b-button>
 				</div>
-				<div class="row justify-content-center" v-if="selectedTab==1">
+				<div class="row justify-content-center" v-if="selectedTab == 1">
 					<b-button @click="handleActivarClick(data.item)" class="btn-sm ml-1"> <i
 							class="fa fa-power-off text-success"></i></b-button>
 				</div>
-			<!-- </template>
+				<!-- </template>
 			<template v-slot:cell(delete)="data"> -->
 				<div class="row justify-content-center mt-1">
 				</div>

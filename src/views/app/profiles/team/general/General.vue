@@ -15,11 +15,12 @@
 			</b-card-header>
 			<!-- {{ usersDefault }} -->
 			<!-- {{ selectedTab }} -->
+			<!-- {{ tabs[0].statusCode }} -->
 			<b-tabs v-model="selectedTab">
 				<b-tab v-for="(tab, index) in tabs" :key="index" :title="tab.title" @click="filterUsers(tab.statusCode)">
 					<TableBasic :items="filteredUsers" :fields="fields" :perPage="5" :options="opciones" :editButton="true"
-						@editar-click="handleEditarClick" @inactivar-click="handleInactivarClick" @activar-click="handleActivarClick"
-						:selectedTab="selectedTab" />
+						@editar-click="handleEditarClick" @inactivar-click="handleInactivarClick"
+						@activar-click="handleActivarClick" :selectedTab="selectedTab" />
 				</b-tab>
 			</b-tabs>
 
@@ -51,7 +52,7 @@ export default {
 	data() {
 		return {
 			datos: [],
-			selectedTab: 'Activos',
+			selectedTab: 0,
 			usersDefault: [], // Array para usuarios cargados inicialmente
 			showActivos: true,
 			usersPasivos: [],
@@ -79,7 +80,7 @@ export default {
 				{ key: 'email', label: 'Correo' },
 				{ key: 'departamento', label: 'Departamento' },
 				{ key: 'extension', label: 'Extension' },
-				 { key: 'edit', label: '' },
+				{ key: 'edit', label: '' },
 				// { key: 'delete', label: '' },
 			],
 			opciones: {
@@ -174,13 +175,14 @@ export default {
 					};
 				});
 				// Inicialmente, los usuarios filtrados serán los mismos que los usuarios cargados
-				this.filteredUsers = [...this.usersDefault];
+				// this.filteredUsers = [...this.usersDefault];
 			} catch (error) {
 				console.error("Error:", error);
 			}
 		},
 		// Método para aplicar el filtro según el estado_id
 		filterUsers(statusCode) {
+			console.log("code", statusCode);
 			if (statusCode === 1) {
 				this.filteredUsers = [];
 				this.filteredUsers = this.usersDefault.filter(user => user.estado_id === 1);
@@ -208,49 +210,81 @@ export default {
 			this.handleClick();
 			console.log('Se hizo clic en Editar en el elemento:', item);
 		},
-		handleInactivarClick(item) {
-
-			console.log("quitar usuario", item)
+		handleInactivarClick: async function (item) {
+			console.log("quitar usuario", item);
 			this.$swal({
-				title: "Inactivar Usuario!",
-				text: '¡Confirma si deseas inactivar a ' + item.nombre_completo + '!',
+				title: "¿Deseas inactivar Usuario?",
+				text: '' + item.nombre_completo + '',
 				icon: 'warning',
 				showCancelButton: false,
 				confirmButtonColor: '#3085d6',
-				confirmButtonText: 'Si, confirmar'
-			}).then((result) => {
+				confirmButtonText: 'Si, inactivar'
+			}).then(async (result) => { // Marcar la función como async aquí
 				if (result.isConfirmed) {
-					this.$swal({
-						title: 'Inactivado!',
-
-						icon: 'success',
-						timer: 2000,
-						showConfirmButton: false,
-					});
+					try {
+						const response = await internoServices.updateStatus(item.users_id); // Reemplaza "inactivarUsuario" por la función adecuada
+						console.log("respuesta quitar usuario", response.data);
+						if (response.data) {
+							this.filterUsers(2);
+							const updatedResponse = await internoServices.getAllUsers();
+							this.filteredUsers = updatedResponse.data.data;
+							this.$swal({
+								title: 'Inactivado!',
+								icon: 'success',
+								timer: 2000,
+								showConfirmButton: false,
+							});
+						} else {
+							this.$swal({
+								title: 'Error',
+								text: 'No se pudo inactivar el usuario.',
+								icon: 'error',
+							});
+						}
+					} catch (error) {
+						console.error("Error:", error);
+					}
 				}
-			})
-			console.log('Se hizo clic en Editar en el elemento:', item);
+			});
 		},
+
 		handleActivarClick(item) {
 
 			console.log("quitar usuario", item)
 			this.$swal({
-				title: "¡Atención!",
-				text: '¿Esta seguro de ACTIVAR a ' + item.nombre_completo + ' ?',
+				title: "¿Deseas activar usuario?",
+				text: '' + item.nombre_completo + '',
 				icon: 'warning',
 				showCancelButton: true,
 				confirmButtonColor: '#3085d6',
 
 				confirmButtonText: 'Si, activar!'
-			}).then((result) => {
-				if (result.isConfirmed) {
-					this.$swal({
-						title: 'Activado!',
+			}).then(async (result) => {
 
-						icon: 'success',
-						timer: 2000,
-						showConfirmButton: false,
-					});
+				if (result.isConfirmed) {
+					try {
+						const response = await internoServices.updateStatus(item.users_id); // Reemplaza "inactivarUsuario" por la función adecuada
+						console.log("respuesta quitar usuario", response.data);
+						if (response.data) {
+							this.filterUsers(1);
+							const updatedResponse = await internoServices.getAllUsers();
+							this.filteredUsers = updatedResponse.data.data;
+							this.$swal({
+								title: 'Activado!',
+								icon: 'success',
+								timer: 2000,
+								showConfirmButton: false,
+							});
+						} else {
+							this.$swal({
+								title: 'Error',
+								text: 'No se pudo inactivar el usuario.',
+								icon: 'error',
+							});
+						}
+					} catch (error) {
+						console.error("Error:", error);
+					}
 				}
 			})
 			console.log('Se hizo clic en Editar en el elemento:', item);
@@ -259,11 +293,12 @@ export default {
 
 	},
 	async mounted() {
-		await this.loadUsers(); // Cargar usuarios iniciales
+		await this.loadUsers();
 		this.tabs = [
 			{ title: "Activos", statusCode: 1 },
 			{ title: "Inactivos", statusCode: 2 },
 		];
+		this.filterUsers(1);
 	},
 };
 </script>

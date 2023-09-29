@@ -14,12 +14,8 @@ export default {
     let url = server + resource + "getAllUsers";
     return Axios.get(url);
   },
-  getAllUsersActive() {
-    let url = server + resource + "getAllUsersActive";
-    return Axios.get(url);
-  },
-  getAllUsersPassive() {
-    let url = server + resource + "getAllUsersPassive";
-    return Axios.get(url);
+  updateStatus(id) {
+    let url = server + resource + "updateStatus/";
+    return Axios.put(url + id);
   },
 };
