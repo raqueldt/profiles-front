@@ -21,6 +21,7 @@
 					<TableBasic :items="filteredUsers" :fields="fields" :perPage="5" :options="opciones" :editButton="true"
 						@editar-click="handleEditarClick" @inactivar-click="handleInactivarClick"
 						@activar-click="handleActivarClick" :selectedTab="selectedTab" />
+
 				</b-tab>
 			</b-tabs>
 
@@ -76,13 +77,13 @@ export default {
 			campos: ['id', 'nombre', 'edad'], // Definición de los campos
 			fields: [
 				// Definir las columnas de la tabla
-				{ key: 'nombre_completo', label: 'Nombre' },
-				{ key: 'email', label: 'Correo' },
-				{ key: 'departamento', label: 'Departamento' },
-				{ key: 'extension', label: 'Extension' },
-				{ key: 'edit', label: '' },
-				// { key: 'delete', label: '' },
+				{ key: 'nombre_completo', label: 'Nombre', sortable: true, filterable: true },
+				{ key: 'email', label: 'Correo', sortable: true, filterable: true },
+				{ key: 'departamento', label: 'Departamento', sortable: true, filterable: true },
+				{ key: 'extension', label: 'Extension', sortable: true, filterable: true },
+				{ key: 'actions', label: '' },
 			],
+
 			opciones: {
 				highlightMatches: true,
 				sortable: true,
