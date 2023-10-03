@@ -1,5 +1,6 @@
 <template>
 	<div>
+		{{ filters }}
 		<b-table striped responsive show-empty :items="filtered" :fields="fields">
 			<template slot="top-row" slot-scope="{ fields }">
 				<td v-for="field in fields" :key="field.key">
@@ -13,17 +14,14 @@
 					<b-button v-if="field.key == 'actions'"> <i class="iconsminds-reload"></i></b-button>
 				</td>
 			</template>
-
-
 			<template v-slot:cell(actions)="data">
 				<div class="row justify-content-center" v-if="selectedTab == 0">
-					<b-button @click="handleEditClick(actions.item)" class="btn-sm"> <i
-							class="iconsminds-pen"></i></b-button>
-					<b-button @click="handleInactivarClick(actions.item)" class="btn-sm ml-1"> <i
+					<b-button @click="handleEditClick(data.item)" class="btn-sm"> <i class="iconsminds-pen"></i></b-button>
+					<b-button @click="handleInactivarClick(data.item)" class="btn-sm ml-1"> <i
 							class="fa fa-power-off text-danger"></i></b-button>
 				</div>
 				<div class="row justify-content-center" v-if="selectedTab == 1">
-					<b-button @click="handleActivarClick(actions.item)" class="btn-sm ml-1"> <i
+					<b-button @click="handleActivarClick(data.item)" class="btn-sm ml-1"> <i
 							class="fa fa-power-off text-success"></i></b-button>
 				</div>
 			</template>
@@ -38,29 +36,31 @@
 export default {
 	name: 'TableBasic',
 	props: {
-		items: Array, // Los datos de la tabla original
-		fields: Array, // Los campos de la tabla
-		perPage: Number, // Número de elementos por página
-		options: Object, // Las opciones personalizadas
+		items: Array,
+		fields: Array,
+		perPage: Number,
+		options: Object,
 		editButton: Boolean,
-		selectedTab: String
+		selectedTab: Number
 	},
 	data() {
 		return {
 			currentPage: 1,
-			displayedItems: [], // Variable para mostrar los datos de la página actual
+			displayedItems: [],
 			searchTerm: '',
 			filters: {
 				id: '',
-				issuedBy: '',
-				issuedTo: ''
+				nombre_completo: '',
+				departamento: '',
+				email: '',
+				extension: '',
 			},
-			uniqueDepartments: []
-			// items: [{ id: 1234, issuedBy: 'Operator', issuedTo: 'abcd-efgh' }, { id: 5678, issuedBy: 'User', issuedTo: 'ijkl-mnop' }]
+			uniqueDepartments: [],
+			selectedTabValue: this.selectedTab,
 		};
 	},
 	computed: {
-		// Calcula el rango de índices de los elementos a mostrar en la página actual
+
 		startIndex() {
 			return (this.currentPage - 1) * this.perPage;
 		},
@@ -69,7 +69,8 @@ export default {
 		},
 		filtered() {
 			const filtered = this.items.map(item => {
-				const { users_id, estado_id, ...filteredItem } = item; // Desestructura para excluir estado_id
+				// const { users_id, estado_id, ...filteredItem } = item;
+				const { ...filteredItem } = item;
 				return filteredItem;
 			}).filter(item => {
 				return Object.keys(this.filters).every(key =>
@@ -78,8 +79,7 @@ export default {
 			});
 			return filtered.length > 0 ? filtered : [{
 				id: '',
-				issuedBy: '',
-				issuedTo: ''
+				departamento: ''
 			}]
 		}
 	},
@@ -87,14 +87,12 @@ export default {
 		items() {
 			this.updateDisplayedItems(1);
 		},
-		// Observa los cambios en la página actual y actualiza los datos mostrados
 		currentPage(newPage) {
 			this.updateDisplayedItems(newPage);
 		}
 	},
 	methods: {
 		handleSearch() {
-			// Filtra los datos en función del término de búsqueda
 			this.displayedItems = this.items.filter(item => {
 				return item.nombre_completo.toLowerCase().includes(this.searchTerm.toLowerCase());
 			});
@@ -102,44 +100,34 @@ export default {
 		onPageChange(newPage) {
 			this.currentPage = newPage;
 		},
-		// Actualiza los datos mostrados según la página actual
 		updateDisplayedItems(newPage) {
 			this.displayedItems = this.items.slice(this.startIndex, this.endIndex);
 		},
 		handleEditClick(item) {
-			// alert("dsnglkds", item);
-			this.$emit('editar-click', item);
+			console.log("EDITAR", item);
+			this.$emit('editar-click', 'editUser', item.users_id);
 		},
 		handleInactivarClick(item) {
-			// alert("dsnglkds", item);
 			this.$emit('inactivar-click', item);
 		},
 		handleActivarClick(item) {
-			// alert("dsnglkds", item);
 			this.$emit('activar-click', item);
 		},
 		onPageChange(newPage) {
 			this.currentPage = newPage;
-			// Asegúrate de que la página actual sea válida
 			if (this.currentPage < 1) {
 				this.currentPage = 1;
 			}
 			if (this.currentPage > this.totalPages) {
 				this.currentPage = this.totalPages;
 			}
-			// Actualiza los datos mostrados según la página actual
 			this.updateDisplayedItems(this.currentPage);
 		}
 	},
 	mounted() {
-		// Al montar el componente, inicialmente muestra los datos de la primera página
 		this.updateDisplayedItems(this.currentPage);
 		const departments = new Set(this.items.map(item => item.departamento));
 		this.uniqueDepartments = [...departments];
 	},
 };
 </script>
-
-<style scoped>
-/* Estilos CSS específicos para este componente de tabla según tu sistema de diseño */
-</style>

@@ -1,6 +1,23 @@
 <template>
 	<div>
-		{{ actionModal }}
+
+		Actual: {{ actionModalValue }}<br>
+		{{ idUserModal }}<br>
+
+		<!-- <div class="row">
+			<div class="col-5">
+				<pre>
+			{{ formData }}
+			</pre>
+			</div>
+			<div class="col">
+				<pre>
+			{{ formDataModal }}
+			</pre>
+			</div>
+		</div> -->
+
+
 		<b-progress :value="progress" animated></b-progress>
 		<b-row class="justify-content-center">
 			<b-col v-for="(step, index) in stepTitles" :key="index" class="text-center">
@@ -32,7 +49,8 @@ import Step6 from './createuserStep6.vue';
 
 export default {
 	props: {
-		actionModal: String
+		actionModal: String,
+		idUserModal: Number
 	},
 	components: {
 		Step1,
@@ -44,7 +62,10 @@ export default {
 	},
 	data() {
 		return {
+			formDataModal: [],
+			actionModalValue: this.actionModal,
 			formData: {
+				users_id: '',
 				image: null,
 				identificacion: '',
 				nombre_completo: '',
@@ -67,6 +88,8 @@ export default {
 				forma_pago: '',
 				roles: []
 			},
+			idUserModalValue: this.idUserModal,
+
 			currentStep: 1,
 			totalSteps: 6,
 			stepComponents: [Step1, Step2, Step3, Step4, Step5, Step6],
@@ -121,10 +144,51 @@ export default {
 		},
 		getStepIcon(stepIndex) {
 			return 'fa fa-' + this.stepIcons[stepIndex - 1];
+		},
+		async consultarData(idUser) {
+			console.log("recibe user", idUser);
+			const perfilParams = {
+				id: idUser
+			};
+			// try {
+			// 	const perfilResponse = await InternoServices.show(perfilParams);
+			// 	this.formDataModal = perfilResponse.data.data;
+
+			// 	console.log("datos para agregar", this.formDataModal);
+			// } catch (error) {
+
+			// }
+			try {
+				const perfilResponse = await InternoServices.show(perfilParams);
+				this.formDataModal = perfilResponse.data.data;
+
+				console.log("datos para agregar", this.formDataModal);
+
+				// Verificar si actionModalValue es "editUser" y copiar los valores de formDataModal a formData
+				if (this.actionModalValue === 'editUser') {
+					for (const key in this.formDataModal) {
+						if (this.formData.hasOwnProperty(key)) {
+							this.formData[key] = this.formDataModal[key];
+						}
+					}
+				}
+			} catch (error) {
+				console.error(error);
+			}
+		}
+	},
+	watch: {
+		idUserModal: {
+			immediate: true,
+			handler(newValue) {
+				this.consultarData(newValue);
+			}
 		}
 	},
 	mounted() {
 
+
+		console.log("DATOS ESTRUCTURA", this.formData)
 	},
 };
 </script>

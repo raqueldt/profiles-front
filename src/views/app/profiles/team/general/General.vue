@@ -2,15 +2,16 @@
 	<div>
 		<ModalBasic :show-modal="modalVisible" :modal-size="modalSize" @close="closeModal" title="crear">
 			<template v-if="modalContent.component">
-				<component :is="modalContent.component" @usuario-creado="closeModal" actionModal="jaja"></component>
+				<component :is="modalContent.component" @usuario-creado="closeModal" :actionModal=actionModal
+					:idUserModal=idUserModal></component>
 			</template>
 		</ModalBasic>
 
 		<b-card>
 			<b-card-header>
 				<div class="d-flex justify-content-between align-items-center mb-3">
-					<h5 class="m-0" v-if="filteredUsers">Usuarios <small>| {{ filteredUsers.length }} </small> </h5>
-					<ButtonBasic variant="primary" text="New User" @click="handleClick" />
+					<h5 class="m-0" v-if="filteredUsers">Usuarios <small>| {{ filteredUsers.length }}</small></h5>
+					<ButtonBasic variant="primary" text="New User" @click="handleClick('addUser')" />
 				</div>
 			</b-card-header>
 			<!-- {{ usersDefault }} -->
@@ -52,12 +53,15 @@ export default {
 	name: "General",
 	data() {
 		return {
+			filteredUsers: [],
+			actionModal: '',
 			datos: [],
 			selectedTab: 0,
-			usersDefault: [], // Array para usuarios cargados inicialmente
+			usersDefault: [],
 			showActivos: true,
 			usersPasivos: [],
 			modalVisible: false,
+			idUserModal: [],
 			modalContent: {
 				title: 'Título del Modal',
 				text: 'Contenido del Modal'
@@ -160,8 +164,6 @@ export default {
 		}
 	},
 	methods: {
-
-
 		async loadUsers() {
 			try {
 				const response = await internoServices.getAllUsers();
@@ -176,7 +178,7 @@ export default {
 					};
 				});
 				// Inicialmente, los usuarios filtrados serán los mismos que los usuarios cargados
-				// this.filteredUsers = [...this.usersDefault];
+				//this.filteredUsers = [...this.usersDefault];
 			} catch (error) {
 				console.error("Error:", error);
 			}
@@ -189,7 +191,6 @@ export default {
 				this.filteredUsers = this.usersDefault.filter(user => user.estado_id === 1);
 			} else if (statusCode === 2) {
 				this.filteredUsers = [];
-				// Filtrar usuarios inactivos
 				this.filteredUsers = this.usersDefault.filter(user => user.estado_id === 2);
 			}
 		},
@@ -199,7 +200,8 @@ export default {
 		openModal() {
 			this.modalVisible = true;
 		},
-		handleClick() {
+		handleClick(action) {
+			this.actionModal = action;
 			this.modalVisible = true;
 			this.modalContent.component = User;
 		},
@@ -207,11 +209,16 @@ export default {
 		closeModal() {
 			this.modalVisible = false;
 		},
-		handleEditarClick(item) {
-			this.handleClick();
-			console.log('Se hizo clic en Editar en el elemento:', item);
+		async handleEditarClick(action, item) {
+			console.log('Se hizo clic en Editar en el elemento:', action);
+			console.log('ItemID:', item);
+
+			this.idUserModal = item;
+
+			// Aquí puedes acceder al 'item' enviado desde TableBasic
+			this.handleClick(action);
 		},
-		handleInactivarClick: async function (item) {
+		handleInactivarClick(item) {
 			console.log("quitar usuario", item);
 			this.$swal({
 				title: "¿Deseas inactivar Usuario?",
