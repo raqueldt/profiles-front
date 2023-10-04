@@ -18,9 +18,13 @@ export default {
     let url = server + resource + "updateStatus/";
     return Axios.put(url + id);
   },
+  updateUser(id, data) {
+    let url = server + resource + "updateUser/";
+    return Axios.put(url + id, data);
+  },
   show(params) {
     console.log("paaa", params);
-    let url = server + resource + "perfilUser";
+    let url = server + resource + "dataUser";
     return Axios.get(url, { params });
   },
 };

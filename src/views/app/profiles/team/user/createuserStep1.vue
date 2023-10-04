@@ -98,7 +98,7 @@ export default {
 		getRoles() {
 			RolesServices.getRoles()
 				.then((response) => {
-						this.roles = response.data.data.filter(rol => rol.tag === 'ATC').map((rol) => ({
+					this.roles = response.data.data.filter(rol => rol.tag === 'ATC').map((rol) => ({
 						value: rol.id,
 						text: rol.title,
 					}));
@@ -124,6 +124,8 @@ export default {
 			}
 		},
 		updateRoles(newValue) {
+
+			console.log("reciberoles", newValue);
 			this.formData.roles = newValue;
 			this.formData.rolesDinamics = newValue;
 			const selectedRoles = Object.values(newValue).map(item => item.value);
@@ -141,12 +143,14 @@ export default {
 			}));
 		},
 	},
-	mounted() {
+	created() {
 		this.getRoles();
 
 		this.validateForm();
 
-
+		if (this.formData.rolesDinamics) {
+			this.updateRoles(this.formData.rolesDinamics);
+		}
 	},
 	watch: {
 		formData: {

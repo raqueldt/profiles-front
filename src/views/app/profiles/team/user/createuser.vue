@@ -1,22 +1,9 @@
 <template>
 	<div>
-
-		Actual: {{ actionModalValue }}<br>
+		Actual:
+		<!-- <br> -->
+		{{ actionModalValue }}<br>
 		{{ idUserModal }}<br>
-
-		<!-- <div class="row">
-			<div class="col-5">
-				<pre>
-			{{ formData }}
-			</pre>
-			</div>
-			<div class="col">
-				<pre>
-			{{ formDataModal }}
-			</pre>
-			</div>
-		</div> -->
-
 
 		<b-progress :value="progress" animated></b-progress>
 		<b-row class="justify-content-center">
@@ -31,9 +18,22 @@
 		<b-row class="justify-content-center">
 			<b-col>
 				<component :is="stepComponents[currentStep - 1]" :formData="formData" :title="getStepTitle(currentStep)"
-					@prev="prevStep" @next="nextStep" @submit="submitForm" />
+					@prev="prevStep" @next="nextStep" @submit="submitForm" @submitEdit="submitFormEdit" />
 			</b-col>
 		</b-row>
+		<div class="row">
+			<div class="col-5">
+				<pre>
+			{{ formData }}
+			</pre>
+			</div>
+			<div class="col">
+				<pre>
+			{{ formDataModal }}
+			</pre>
+			</div>
+		</div>
+
 		<!-- <pre>{{ formData }}</pre> -->
 	</div>
 </template>
@@ -76,17 +76,53 @@ export default {
 				notas: '',
 				empresa: '',
 				departamento_id: '',
-				cargo_id: '',
+				cargo_id: '', //F
 				tipo_contrato: '',
 				sueldo: '',
-				banda_salarial: '',
+				banda_salarial: '', //F
 				acumula_decimos: '',
 				operador_id: '',
-				funciones: '',
+				funciones: '', //F
 				tipo_discapacidad: '',
 				trabajador_sustituto: '',
-				forma_pago: '',
-				roles: []
+				forma_pago: '', //F
+				//EDITAR
+				name: '',
+				lastname: '',
+				email: '',
+				username: '', //F
+				password: '', //F
+				dias_vacaciones: '', //F
+				dias_feriado_carnaval: '', //F
+				dias_feriado_difuntos: '', //F
+				dias_descuento: '', //F
+				region: '', //F
+				direccion: '', //F
+				referencia_direccion: '', //F
+				sector: '', //F
+				numero_contacto: '', //F
+				telefono_convencional: '', //F
+				celular_oficina: '', //F
+				extension: '', //F
+				contacto_emergencia: '', //F
+				numero_emergencia: '', //F
+				direccion_emergencia: '', //F
+				etnia: '', //F
+				tipo_sangre: '', //F
+				lateralidad: '', //F
+				uso_lentes: '', //F
+				peso: '', //F
+				estatura: '', //F
+				posee_discapacidad: '', //F
+				trabajador_sustituto: '', //F
+				id_biometrico: '', //F
+				codigo_gps: '', //F
+				codigo_37: '', //F
+				notas: '', //F
+				numero_cuenta: '', //F
+				tipo_cuenta: '', //F
+				banco: '', //F
+				roles: [],//F
 			},
 			idUserModalValue: this.idUserModal,
 
@@ -139,6 +175,35 @@ export default {
 					console.log(error);
 				}).finally(() => this.clear());
 		},
+		async submitFormEdit() {
+			// Aquí puedes enviar los datos al servidor
+			console.log("DATOS EDIT USUARIO", this.formData);
+			console.log("DATOS EDIT USUARIO ID", this.formData.users_id);
+
+			try {
+				const response = await InternoServices.updateUser(this.formData.users_id,this.formData); // Reemplaza "inactivarUsuario" por la función adecuada
+				console.log("respuesta editar usuario", response.data);
+				if (response.data) {
+					// this.filterUsers(2);
+					// const updatedResponse = await InternoServices.getAllUsers();
+					// this.filteredUsers = updatedResponse.data.data;
+					// this.$swal({
+					// 	title: 'Inactivado!',
+					// 	icon: 'success',
+					// 	timer: 2000,
+					// 	showConfirmButton: false,
+					// });
+				} else {
+					this.$swal({
+						title: 'Error',
+						text: 'No se pudo inactivar el usuario.',
+						icon: 'error',
+					});
+				}
+			} catch (error) {
+				console.error("Error:", error);
+			}
+		},
 		getStepTitle(stepIndex) {
 			return this.stepTitles[stepIndex - 1];
 		},
@@ -167,8 +232,20 @@ export default {
 				// Verificar si actionModalValue es "editUser" y copiar los valores de formDataModal a formData
 				if (this.actionModalValue === 'editUser') {
 					for (const key in this.formDataModal) {
-						if (this.formData.hasOwnProperty(key)) {
-							this.formData[key] = this.formDataModal[key];
+						if (this.formDataModal.hasOwnProperty(key)) {
+							// Verificar si la clave es 'roles'
+							if (key === 'roles') {
+								// Crear un nuevo array rolesDinamics con solo los valores 'id'
+								this.formData['rolesDinamics'] = this.formDataModal[key].map(role => ({
+									value: role.id, // o el valor adecuado
+									text: role.rol, // o el valor adecuado
+								}));
+								// Modificar formData para que 'roles' contenga solo los valores 'id'
+								this.formData['roles'] = this.formDataModal[key].map(role => role.id);
+							} else {
+								// Copiar otros valores directamente
+								this.formData[key] = this.formDataModal[key];
+							}
 						}
 					}
 				}

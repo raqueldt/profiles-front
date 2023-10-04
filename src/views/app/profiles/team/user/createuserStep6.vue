@@ -39,7 +39,9 @@
 				<i class="fa fa-arrow-left"></i>
 				Anterior
 			</b-button>
-			<b-button variant="success" @click="submitForm" :disabled="!isFormValid"> <i class="fa fa-check"></i> Crear
+			<b-button variant="success"  v-if="!formData.users_id" @click="submitForm" :disabled="!isFormValid"> <i class="fa fa-check"></i> Crear
+				Usuario</b-button>
+			<b-button variant="success"  v-if="formData.users_id" @click="submitFormEdit" :disabled="!isFormValid"> <i class="fa fa-check"></i> Actualizar
 				Usuario</b-button>
 		</div>
 	</div>
@@ -61,6 +63,11 @@ export default {
 		submitForm() {
 			if (this.isFormValid) {
 				this.$emit('submit');
+			}
+		},
+		submitFormEdit() {
+			if (this.isFormValid) {
+				this.$emit('submitEdit');
 			}
 		},
 		validateForm() {
