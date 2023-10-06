@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<ModalBasic :show-modal="modalVisible" :modal-size="modalSize" @close="closeModal" title="crear">
+		<ModalBasic :showModal="modalVisible" :modal-size="modalSize" @close="closeModal" title="crear">
 			<template v-if="modalContent.component">
 				<component :is="modalContent.component" @usuario-creado="closeModal" :actionModal=actionModal
 					:idUserModal=idUserModal></component>
@@ -10,7 +10,9 @@
 		<b-card>
 			<b-card-header>
 				<div class="d-flex justify-content-between align-items-center mb-3">
-					<h5 class="m-0" v-if="filteredUsers">Usuarios <small>| {{ filteredUsers.length }}</small></h5>
+					<h5 class="m-0" v-if="filteredUsers">Usuarios <small>| {{ filteredUsers.length }}</small>
+						<!-- {{ usersDefault.length }} -->
+					</h5>
 					<ButtonBasic variant="primary" text="New User" @click="handleClick('addUser')" />
 				</div>
 			</b-card-header>
@@ -18,6 +20,10 @@
 			<!-- {{ selectedTab }} -->
 			<!-- {{ tabs[0].statusCode }} -->
 			<b-tabs v-model="selectedTab">
+				<!-- DEFAULT: {{ usersDefault.length }}
+				<br> -->
+				<!-- FILTRADO: {{ filteredUsers.length }} -->
+
 				<b-tab v-for="(tab, index) in tabs" :key="index" :title="tab.title" @click="filterUsers(tab.statusCode)">
 					<TableBasic :items="filteredUsers" :fields="fields" :perPage="5" :options="opciones" :editButton="true"
 						@editar-click="handleEditarClick" @inactivar-click="handleInactivarClick"
@@ -84,6 +90,7 @@ export default {
 				{ key: 'nombre_completo', label: 'Nombre', sortable: true, filterable: true },
 				{ key: 'email', label: 'Correo', sortable: true, filterable: true },
 				{ key: 'departamento', label: 'Departamento', sortable: true, filterable: true },
+				{ key: 'cargo', label: 'Cargo', sortable: true, filterable: true },
 				{ key: 'extension', label: 'Extension', sortable: true, filterable: true },
 				{ key: 'actions', label: '' },
 			],
@@ -167,6 +174,9 @@ export default {
 		async loadUsers() {
 			try {
 				const response = await internoServices.getAllUsers();
+
+				console.log("defaut", response.data.data)
+				//  this.usersDefault = response.data.data;
 				this.usersDefault = response.data.data.map(item => {
 					return {
 						users_id: item.users_id,
@@ -174,11 +184,12 @@ export default {
 						email: item.email,
 						departamento: item.departamento,
 						extension: item.extension,
-						estado_id: item.estado_id,
+						estado: item.estado,
+						cargo: item.cargo,
 					};
 				});
-				// Inicialmente, los usuarios filtrados serán los mismos que los usuarios cargados
-				//this.filteredUsers = [...this.usersDefault];
+				// this.filteredUsers = this.usersDefault;
+
 			} catch (error) {
 				console.error("Error:", error);
 			}
@@ -188,11 +199,12 @@ export default {
 			console.log("code", statusCode);
 			if (statusCode === 1) {
 				this.filteredUsers = [];
-				this.filteredUsers = this.usersDefault.filter(user => user.estado_id === 1);
+				this.filteredUsers = this.usersDefault.filter(user => user.estado === 1);
 			} else if (statusCode === 2) {
 				this.filteredUsers = [];
-				this.filteredUsers = this.usersDefault.filter(user => user.estado_id === 2);
+				this.filteredUsers = this.usersDefault.filter(user => user.estado === 2);
 			}
+			console.log("filterred", this.filteredUsers)
 		},
 		// ... (resto de los métodos) ...
 

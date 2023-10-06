@@ -15,7 +15,7 @@ export default {
 	},
 	data() {
 		return {
-			showModal: this.showModal
+			// showModal: this.showModal
 		}
 	},
 	methods: {

@@ -1,7 +1,8 @@
 <template>
 	<div>
-		{{ filters }}
-		<b-table striped responsive show-empty :items="filtered" :fields="fields">
+		<!-- {{ items }} -->
+		<!-- {{ filters }} -->
+		<b-table striped responsive show-empty :items="filtered" :fields="dynamicFields">
 			<template slot="top-row" slot-scope="{ fields }">
 				<td v-for="field in fields" :key="field.key">
 					<input v-model="filters[field.key]" v-if="field.key != 'actions' && field.key != 'departamento'"
@@ -11,9 +12,11 @@
 						<option value="">Seleccionar departamento</option>
 						<option v-for="depto in uniqueDepartments" :value="depto">{{ depto }}</option>
 					</b-select>
-					<b-button v-if="field.key == 'actions'"> <i class="iconsminds-reload"></i></b-button>
+					<b-button v-if="field.key == 'actions'" @click=""> <i class="iconsminds-reload"></i></b-button>
 				</td>
 			</template>
+
+
 			<template v-slot:cell(actions)="data">
 				<div class="row justify-content-center" v-if="selectedTab == 0">
 					<b-button @click="handleEditClick(data.item)" class="btn-sm"> <i class="iconsminds-pen"></i></b-button>
@@ -57,6 +60,7 @@ export default {
 			},
 			uniqueDepartments: [],
 			selectedTabValue: this.selectedTab,
+			lista: this.items
 		};
 	},
 	computed: {
@@ -68,7 +72,7 @@ export default {
 			return this.currentPage * this.perPage;
 		},
 		filtered() {
-			const filtered = this.items.map(item => {
+			const filtered = this.lista.map(item => {
 				// const { users_id, estado_id, ...filteredItem } = item;
 				const { ...filteredItem } = item;
 				return filteredItem;
@@ -81,7 +85,30 @@ export default {
 				id: '',
 				departamento: ''
 			}]
-		}
+		},
+		dynamicFields() {
+			if (this.selectedTab === 0) {
+				return [
+					{ key: 'nombre_completo', label: 'Nombre', sortable: true, filterable: true },
+					{ key: 'email', label: 'Correo', sortable: true, filterable: true },
+					{ key: 'departamento', label: 'Departamento', sortable: true, filterable: true },
+					// { key: 'cargo', label: 'Cargo', sortable: true, filterable: true },
+					{ key: 'extension', label: 'Extension', sortable: true, filterable: true },
+					{ key: 'actions', label: '' },
+				];
+			} else if (this.selectedTab === 1) {
+				return [
+					{ key: 'nombre_completo', label: 'Nombre', sortable: true, filterable: true },
+					{ key: 'email', label: 'Correo', sortable: true, filterable: true },
+					{ key: 'departamento', label: 'Departamento', sortable: true, filterable: true },
+					{ key: 'cargo', label: 'Cargo', sortable: true, filterable: true },
+					{ key: 'actions', label: '' },
+				];
+			} else {
+				// Manejar otros casos si es necesario
+				return [];
+			}
+		},
 	},
 	watch: {
 		items() {

@@ -35,7 +35,9 @@
 						</b-form-group> -->
 						<label for="roles">Roles <span class="text-danger text-sm">*</span></label>
 
-						<MultiselectBasic :selected="formData.rolesDinamics" :options="rolesOptions"
+						<!-- <MultiselectBasic :selected="formData.rolesDinamics" :options="rolesOptions"
+							@update:selected="updateRoles" /> -->
+						<MultiselectBasic :selected="selectedRoles" :options="rolesOptions"
 							@update:selected="updateRoles" />
 					</b-col>
 
@@ -56,7 +58,7 @@
 					</b-col>
 				</b-row>
 			</b-card>
-			<div class="text-right">
+			<div class="text-right" v-if="!formData.users_id">
 				<b-button type="submit" :disabled="!isFormValid" variant="primary">
 					Siguiente <i class="fa fa-arrow-right"></i>
 				</b-button>
@@ -84,7 +86,6 @@ export default {
 			roles: [],
 			rolesSave: [],
 			isFormValid: false,
-
 		};
 	},
 	methods: {
@@ -142,21 +143,34 @@ export default {
 				text: rol.text
 			}));
 		},
+		selectedRoles() {
+			if (this.formData.rolesDinamics) {
+				return this.formData.rolesDinamics.map(item => ({
+					value: item.value,
+					text: item.text
+				}));
+			} else {
+				return [];
+			}
+		}
 	},
 	created() {
 		this.getRoles();
 
 		this.validateForm();
 
-		if (this.formData.rolesDinamics) {
-			this.updateRoles(this.formData.rolesDinamics);
-		}
+		// if (this.formData.rolesDinamics) {
+		// 	this.updateRoles(this.formData.rolesDinamics);
+		// }
 	},
 	watch: {
 		formData: {
 			deep: true,
 			handler: 'validateForm', // Llamar a la función de validación cuando cambie el formData
 		},
+		'formData.rolesDinamics': function (newValue) {
+			this.updateRoles(newValue);
+		}
 
 	},
 };

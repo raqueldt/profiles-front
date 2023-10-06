@@ -7,7 +7,7 @@
 					<b-form-group label-for="id_biometrico">
 						<label for="id_biometrico" class="control-label">ID Biometrico</label>
 						<span class="text-danger">*</span>
-						<b-form-input v-model="formData.id_biometrico" id="id_biometrico" type="number"
+						<b-form-input v-model="formData.id_biometrico" id="id_biometrico" type="number" maxlength="3"
 							placeholder="Ingrese el ID Biometrico" />
 					</b-form-group>
 				</b-col>
@@ -34,15 +34,15 @@
 			</b-row>
 		</b-card>
 		<!-- Agrega campos y contenido para este paso -->
-		<div class="row justify-content-between m-1">
+		<div class="row justify-content-between m-1" v-if="!formData.users_id">
 			<b-button @click="prevStep" variant="light">
 				<i class="fa fa-arrow-left"></i>
 				Anterior
 			</b-button>
-			<b-button variant="success"  v-if="!formData.users_id" @click="submitForm" :disabled="!isFormValid"> <i class="fa fa-check"></i> Crear
+			<b-button variant="success" @click="submitForm" :disabled="!isFormValid"> <i class="fa fa-check"></i> Crear
 				Usuario</b-button>
-			<b-button variant="success"  v-if="formData.users_id" @click="submitFormEdit" :disabled="!isFormValid"> <i class="fa fa-check"></i> Actualizar
-				Usuario</b-button>
+			<!-- <b-button variant="success"  v-if="formData.users_id" @click="submitFormEdit" :disabled="!isFormValid"> <i class="fa fa-check"></i> Actualizar
+				Usuario</b-button> -->
 		</div>
 	</div>
 </template>

@@ -1,14 +1,24 @@
 <template>
 	<div>
-		Actual:
-		<!-- <br> -->
-		{{ actionModalValue }}<br>
-		{{ idUserModal }}<br>
+		<!-- {{ actionModalValue }}<br> -->
+		<div class="row justify-content-between ml-2 mr-2" v-if="actionModalValue === 'editUser'">
 
+			<h5 class="text-muted">Actualizar Usuario</h5>
+			<h5>{{ formData.nombre_completo }}</h5>
+		</div>
+		<div class="row justify-content-between ml-2 mr-2" v-else>
+			<h5 class="text-muted">Crear Usuario</h5>
+		</div>
 		<b-progress :value="progress" animated></b-progress>
 		<b-row class="justify-content-center">
 			<b-col v-for="(step, index) in stepTitles" :key="index" class="text-center">
-				<div :class="['step-indicator', { active: index === currentStep - 1 }]">
+				{{ index + 1 }}
+				<div v-if="actionModalValue == 'editUser'" style="cursor: pointer;"
+					:class="['step-indicator', { active: index === currentStep - 1 }]" @click="verificarSeccion(index + 1)">
+					<i v-if="index < currentStep - 1" class="text-primary fas fa-check"></i>
+					<i v-else :class="' fa fa-' + getStepIcon(index + 1)"></i>
+				</div>
+				<div v-else :class="['step-indicator', { active: index === currentStep - 1 }]">
 					<i v-if="index < currentStep - 1" class="text-primary fas fa-check"></i>
 					<i v-else :class="' fa fa-' + getStepIcon(index + 1)"></i>
 				</div>
@@ -21,6 +31,14 @@
 					@prev="prevStep" @next="nextStep" @submit="submitForm" @submitEdit="submitFormEdit" />
 			</b-col>
 		</b-row>
+		<br>
+		<b-row class="text-right" v-if="actionModalValue == 'editUser'">
+			<b-col>
+				<b-button variant="success" @click="submitFormEdit"> <i class="fa fa-check"></i> Actualizar
+					Usuario</b-button></b-col>
+		</b-row>
+
+		<!-- Actual: {{ idUserModal }}<br>
 		<div class="row">
 			<div class="col-5">
 				<pre>
@@ -32,7 +50,7 @@
 			{{ formDataModal }}
 			</pre>
 			</div>
-		</div>
+		</div> -->
 
 		<!-- <pre>{{ formData }}</pre> -->
 	</div>
@@ -124,7 +142,7 @@ export default {
 				banco: '', //F
 				roles: [],//F
 			},
-			idUserModalValue: this.idUserModal,
+
 
 			currentStep: 1,
 			totalSteps: 6,
@@ -153,6 +171,11 @@ export default {
 		},
 	},
 	methods: {
+
+		verificarSeccion(value) {
+			this.currentStep = value;
+			console.log("SELECICONADA", value)
+		},
 		getStepTitle(stepIndex) {
 			return this.stepTitles[stepIndex - 1];
 		},
@@ -170,6 +193,12 @@ export default {
 				.then(response => {
 					console.log("usuario creado", response)
 					this.$emit('usuario-creado'); // Emitir el evento
+					this.$swal({
+						title: 'USUARIO CREADO!',
+						icon: 'success',
+						timer: 2000,
+						showConfirmButton: false,
+					});
 				})
 				.catch(error => {
 					console.log(error);
@@ -181,18 +210,19 @@ export default {
 			console.log("DATOS EDIT USUARIO ID", this.formData.users_id);
 
 			try {
-				const response = await InternoServices.updateUser(this.formData.users_id,this.formData); // Reemplaza "inactivarUsuario" por la función adecuada
+				const response = await InternoServices.updateUser(this.formData); // Reemplaza "inactivarUsuario" por la función adecuada
 				console.log("respuesta editar usuario", response.data);
 				if (response.data) {
+					this.$emit('usuario-creado'); // Emitir el evento
 					// this.filterUsers(2);
 					// const updatedResponse = await InternoServices.getAllUsers();
 					// this.filteredUsers = updatedResponse.data.data;
-					// this.$swal({
-					// 	title: 'Inactivado!',
-					// 	icon: 'success',
-					// 	timer: 2000,
-					// 	showConfirmButton: false,
-					// });
+					this.$swal({
+						title: 'ACTUALIZADO!',
+						icon: 'success',
+						timer: 2000,
+						showConfirmButton: false,
+					});
 				} else {
 					this.$swal({
 						title: 'Error',
@@ -258,7 +288,12 @@ export default {
 		idUserModal: {
 			immediate: true,
 			handler(newValue) {
-				this.consultarData(newValue);
+				if (this.actionModal == 'editUser') {
+					this.consultarData(newValue);
+				} else {
+					this.idUserModal = '';
+					this.formData.rolesDinamics = [];
+				}
 			}
 		}
 	},

@@ -68,7 +68,7 @@
 				<!-- Otros campos si es necesario -->
 			</b-row>
 		</b-card>
-		<div class="row justify-content-between m-1">
+		<div class="row justify-content-between m-1" v-if="!formData.users_id">
 			<b-button @click="prevStep" variant="light">
 				<i class="fa fa-arrow-left"></i>
 				Anterior
