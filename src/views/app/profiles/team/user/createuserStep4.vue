@@ -36,24 +36,24 @@
 		</b-card>
 		<b-card>
 			<header>
-				<h4>Contacto</h4>
+				<h4>Mi contacto</h4>
 			</header>
 			<b-row>
 				<b-col lg="3">
 					<b-form-group label-for="numero_contacto">
-						<label for="numero_contacto" class="control-label">Número de Contacto</label>
+						<label for="numero_contacto" class="control-label">Número de celular </label>
 						<span class="text-danger">*</span>
 						<b-form-input v-model="formData.numero_contacto" id="numero_contacto" type="number"
 							placeholder="Ingrese el número de contacto" />
 					</b-form-group>
 				</b-col>
-				<b-col lg="2">
+				<b-col lg="3">
 					<b-form-group label="Teléfono Convencional" label-for="telefono_convencional">
 						<b-form-input v-model="formData.telefono_convencional" id="telefono_convencional" type="number"
 							placeholder="Ingrese el teléfono convencional" />
 					</b-form-group>
 				</b-col>
-				<b-col lg="2">
+				<b-col lg="3">
 					<b-form-group label="Celular de Oficina" label-for="celular_oficina">
 						<b-form-input v-model="formData.celular_oficina" id="celular_oficina" type="number"
 							placeholder="Ingrese el celular de oficina" />
@@ -75,7 +75,7 @@
 			<b-row>
 				<b-col lg="4">
 					<b-form-group label-for="contacto_emergencia">
-						<label for="contacto_emergencia" class="control-label">Nombre de Emergencia</label>
+						<label for="contacto_emergencia" class="control-label">Nombre y Apellido</label>
 						<span class="text-danger">*</span>
 						<b-form-input v-model="formData.contacto_emergencia" id="contacto_emergencia" type="text"
 							placeholder="Ingrese el nombre de emergencia" />
@@ -83,7 +83,7 @@
 				</b-col>
 				<b-col lg="4">
 					<b-form-group label-for="numero_emergencia">
-						<label for="numero_emergencia" class="control-label">Número de Emergencia</label>
+						<label for="numero_emergencia" class="control-label">Número de celular</label>
 						<span class="text-danger">*</span>
 						<b-form-input v-model="formData.numero_emergencia" id="numero_emergencia" type="number"
 							placeholder="Ingrese el número de emergencia" />
@@ -91,7 +91,7 @@
 				</b-col>
 				<b-col lg="4">
 					<b-form-group label-for="direccion_emergencia">
-						<label for="direccion_emergencia" class="control-label">Dirección de Emergencia</label>
+						<label for="direccion_emergencia" class="control-label">Dirección</label>
 						<span class="text-danger">*</span>
 						<b-form-input v-model="formData.direccion_emergencia" id="direccion_emergencia" type="text"
 							placeholder="Ingrese la dirección de emergencia" />

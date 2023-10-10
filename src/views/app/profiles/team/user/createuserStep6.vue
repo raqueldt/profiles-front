@@ -26,9 +26,9 @@
 				</b-col>
 
 
-				<b-col lg="6">
+				<b-col lg="12">
 					<b-form-group label="Notas" label-for="notas">
-						<b-form-textarea v-model="formData.notas" id="notas" placeholder="Ingrese notas adicionales" />
+						<b-form-textarea v-model="formData.notas" id="notas" placeholder="Ingrese notas adicionales" :rows="5"/>
 					</b-form-group>
 				</b-col>
 			</b-row>

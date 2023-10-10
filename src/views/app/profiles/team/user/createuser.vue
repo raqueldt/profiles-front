@@ -146,10 +146,10 @@ export default {
 
 			currentStep: 1,
 			totalSteps: 6,
-			stepComponents: [Step1, Step2, Step3, Step4, Step5, Step6],
+			stepComponents: [Step2,Step1, Step3, Step4, Step5, Step6],
 			stepTitles: [
 				"General",
-				"Personal",
+				"Accesos",
 				"Salary / Position",
 				"Location / Contact",
 				"Health",

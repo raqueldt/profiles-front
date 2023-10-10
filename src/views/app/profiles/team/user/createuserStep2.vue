@@ -11,7 +11,7 @@
 				</b-col>
 				<b-col cols="12" md="4">
 					<b-form-group label-for="nombre_completo">
-						<label for="nombre_completo">Nombre Completo <span class="text-danger text-sm">*</span></label>
+						<label for="nombre_completo">Nombres y Apellidos <span class="text-danger text-sm">*</span></label>
 						<b-form-input v-model="formData.nombre_completo" id="nombre_completo"
 							placeholder="Ingrese los nombres y apellidos" required />
 					</b-form-group>

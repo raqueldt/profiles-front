@@ -9,6 +9,8 @@
 
 		<b-card>
 			<b-card-header>
+
+
 				<div class="d-flex justify-content-between align-items-center mb-3">
 					<h5 class="m-0" v-if="filteredUsers">Usuarios <small>| {{ filteredUsers.length }}</small>
 						<!-- {{ usersDefault.length }} -->
