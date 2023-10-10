@@ -37,7 +37,7 @@
 				<b-button variant="success" @click="submitFormEdit"> <i class="fa fa-check"></i> Actualizar
 					Usuario</b-button></b-col>
 		</b-row>
-
+{{ formData }}
 		<!-- Actual: {{ idUserModal }}<br>
 		<div class="row">
 			<div class="col-5">

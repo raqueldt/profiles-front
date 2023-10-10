@@ -12,10 +12,9 @@
 						<option value="">Seleccionar departamento</option>
 						<option v-for="depto in uniqueDepartments" :value="depto">{{ depto }}</option>
 					</b-select>
-					<b-button v-if="field.key == 'actions'" @click=""> <i class="iconsminds-reload"></i></b-button>
+					<!-- <b-button v-if="field.key == 'actions'" @click=""> <i class="iconsminds-reload"></i></b-button> -->
 				</td>
 			</template>
-
 
 			<template v-slot:cell(actions)="data">
 				<div class="row justify-content-center" v-if="selectedTab == 0">

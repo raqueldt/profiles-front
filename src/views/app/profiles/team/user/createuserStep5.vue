@@ -27,12 +27,12 @@
 						style="width:100%"></b-form-select>
 				</b-col>
 				<b-col lg="2">
-					<b-form-group label="Peso" label-for="peso">
+					<b-form-group label="Peso (kg)" label-for="peso">
 						<b-form-input v-model="formData.peso" id="peso" type="number" placeholder="Ingrese el peso" />
 					</b-form-group>
 				</b-col>
 				<b-col lg="2">
-					<b-form-group label="Estatura" label-for="estatura">
+					<b-form-group label="Estatura (cm)" label-for="estatura">
 						<b-form-input v-model="formData.estatura" id="estatura" type="number"
 							placeholder="Ingrese la estatura" />
 					</b-form-group>
@@ -70,6 +70,7 @@
 				<i class="fa fa-arrow-right"></i>
 			</b-button>
 		</div>
+
 	</div>
 </template>
 

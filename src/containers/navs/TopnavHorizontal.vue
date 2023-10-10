@@ -133,6 +133,7 @@
 								</span>
 							</div>
 
+
 							<div class="p-1 mt-2 ml-2">
 								<router-link tag="a" :to="`${adminRoot}/instructivo`">
 									<i class="glyph-icon iconsminds-files h6 m-0"

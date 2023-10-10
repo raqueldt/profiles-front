@@ -221,6 +221,7 @@ export default {
 		},
 
 		closeModal() {
+			this.filterUsers(1);
 			this.modalVisible = false;
 		},
 		async handleEditarClick(action, item) {

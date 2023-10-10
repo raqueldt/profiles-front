@@ -83,6 +83,7 @@ export default {
 				{ nombre: 'Mis Solicitudes', component: Pestana2Component },
 				{ nombre: 'Mis Documentos', component: Pestana3Component },
 				{ nombre: 'Mi reconocimientos', component: Pestana4Component },
+				{ nombre: 'Team', component: Pestana4Component },
 			],
 			userData: []
 		};

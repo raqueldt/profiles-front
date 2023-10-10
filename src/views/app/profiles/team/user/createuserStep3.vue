@@ -5,10 +5,10 @@
 				<h4>General</h4>
 			</header>
 			<b-row>
-				<b-col lg="9" class="form-group">
+				<b-col lg="12" class="form-group">
 					<b-row>
 
-						<b-col lg="" class="form-group">
+						<b-col lg="5" class="form-group">
 							<label for="empresa" class="control-label">Enterprise</label>
 							<span class="text-danger">*</span>
 							<b-form-select v-model="formData.empresa" id="empresa" :options="empresaOptions"
@@ -59,10 +59,10 @@
 					</b-row>
 
 				</b-col>
-				<b-col lg="3" md="2">
+				<b-col lg="12" md="2">
 					<b-form-group label="Funciones" label-for="Funciones">
 						<b-form-textarea v-model="formData.funciones" id="funciones"
-							placeholder="Ingrese funciones adicionales" style="height: 130px !important;" />
+							placeholder="Ingrese funciones adicionales" :rows="4" />
 					</b-form-group>
 				</b-col>
 			</b-row>
@@ -226,7 +226,10 @@ export default {
 						text: empresa.posicion, // Utiliza "valor" como el texto de la opción
 						departamento_id: empresa.departamento_id, // Utiliza "valor" como el texto de la opción
 						departamento: empresa.departamento, // Utiliza "valor" como el texto de la opción
-					}));
+					}))
+					if (this.formData.cargo_id !== null && this.formData.cargo_id !== undefined) {
+						this.filterPositions(); // Llama a filterPositions para filtrar las opciones de cargo
+					};
 				})
 				.catch(error => {
 					console.log(error);
